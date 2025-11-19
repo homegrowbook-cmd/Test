@@ -1,5 +1,6 @@
 import { IsString, IsOptional, IsBoolean, IsEnum, IsInt, IsDateString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+import { GrowPhase } from '@prisma/client';
 
 export class CreateRunDto {
   @ApiProperty()
@@ -45,10 +46,10 @@ export class CreateRunDto {
   @IsOptional()
   nutrients?: string;
 
-  @ApiProperty({ required: false, enum: ['SEEDLING', 'VEGETATIVE', 'FLOWERING', 'DRYING', 'CURING'] })
-  @IsEnum(['SEEDLING', 'VEGETATIVE', 'FLOWERING', 'DRYING', 'CURING'])
+  @ApiProperty({ required: false, enum: GrowPhase })
+  @IsEnum(GrowPhase)
   @IsOptional()
-  phase?: string;
+  phase?: GrowPhase;
 }
 
 export class UpdateRunDto {
@@ -97,10 +98,10 @@ export class UpdateRunDto {
   @IsOptional()
   nutrients?: string;
 
-  @ApiProperty({ required: false, enum: ['SEEDLING', 'VEGETATIVE', 'FLOWERING', 'DRYING', 'CURING'] })
-  @IsEnum(['SEEDLING', 'VEGETATIVE', 'FLOWERING', 'DRYING', 'CURING'])
+  @ApiProperty({ required: false, enum: GrowPhase })
+  @IsEnum(GrowPhase)
   @IsOptional()
-  phase?: string;
+  phase?: GrowPhase;
 
   @ApiProperty({ required: false })
   @IsDateString()

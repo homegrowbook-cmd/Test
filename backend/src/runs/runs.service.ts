@@ -9,8 +9,19 @@ export class RunsService {
   async create(userId: string, createRunDto: CreateRunDto) {
     const run = await this.prisma.run.create({
       data: {
-        ...createRunDto,
-        userId,
+        title: createRunDto.title,
+        description: createRunDto.description,
+        strainName: createRunDto.strainName,
+        strainType: createRunDto.strainType,
+        isPublic: createRunDto.isPublic ?? true,
+        lightType: createRunDto.lightType,
+        lightWatts: createRunDto.lightWatts,
+        medium: createRunDto.medium,
+        nutrients: createRunDto.nutrients,
+        phase: createRunDto.phase,
+        user: {
+          connect: { id: userId },
+        },
       },
       include: {
         user: {
