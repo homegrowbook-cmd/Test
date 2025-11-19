@@ -80,23 +80,37 @@ git subtree push --prefix backend heroku main
 
 **GitHub Pages** (Recommended for frontend)
 
-The frontend is configured for static export and can be deployed to GitHub Pages.
+The frontend is configured for static export and automatically deploys to GitHub Pages using official GitHub Actions.
 
 1. **Configure GitHub Pages**
    - Go to repository Settings > Pages
-   - Select "GitHub Actions" as source
+   - Select "GitHub Actions" as source (not "Deploy from a branch")
+   - The site will be available at: `https://username.github.io/repository-name/`
 
-2. **Update API URL in workflow**
+2. **How the deployment works**
+   - The CI/CD workflow (`.github/workflows/ci-cd.yml`) automatically deploys when you push to `main`
+   - Uses official GitHub Actions:
+     - `actions/configure-pages@v5` - Configures Pages
+     - `actions/upload-pages-artifact@v3` - Uploads build artifacts
+     - `actions/deploy-pages@v4` - Deploys to GitHub Pages
+   - Deployment typically takes 2-5 minutes
+
+3. **Update API URL in workflow** (if you have a backend)
    
    Edit `.github/workflows/ci-cd.yml` and set:
    ```yaml
    NEXT_PUBLIC_API_URL: https://your-backend-url.com
    ```
 
-3. **Push to main branch**
+4. **Push to main branch**
 ```bash
 git push origin main
 ```
+
+5. **Troubleshooting**
+   - If site shows only README, verify "GitHub Actions" is selected in Settings > Pages
+   - Check the Actions tab to see if the workflow completed successfully
+   - Wait a few minutes for changes to propagate to GitHub's CDN
 
 Your site will be available at: `https://username.github.io/repository-name/`
 
