@@ -99,7 +99,7 @@
   - Alle Run-Informationen anzeigen
   - Edit/Delete Funktionen
   - Timeline der Entries
-- [ ] **Run Edit Form**
+- ✅ **Run Edit Form**
   - Bestehende Runs bearbeiten
   - Phase manuell ändern können
 
