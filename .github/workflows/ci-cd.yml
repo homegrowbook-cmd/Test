@@ -98,7 +98,8 @@ jobs:
         working-directory: ./frontend
         run: npm run build
         env:
-          NEXT_PUBLIC_API_URL: https://api.growdiaries.example.com
+          NEXT_PUBLIC_API_URL: https://growdiaries-api.railway.app
+          NODE_ENV: production
           
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

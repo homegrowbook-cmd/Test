@@ -13,6 +13,7 @@ export default function RunsPage() {
 
   useEffect(() => {
     fetchRuns();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
   const fetchRuns = async () => {
