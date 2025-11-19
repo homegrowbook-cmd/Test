@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+// API configuration for backend connectivity
+// Default URL is localhost:4000, can be overridden via NEXT_PUBLIC_API_URL env variable
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
 
 export const api = axios.create({
