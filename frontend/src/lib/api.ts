@@ -12,9 +12,11 @@ export const api = axios.create({
 // Request interceptor to add auth token
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('accessToken');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('accessToken');
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
     }
     return config;
   },
@@ -33,23 +35,27 @@ api.interceptors.response.use(
       originalRequest._retry = true;
 
       try {
-        const refreshToken = localStorage.getItem('refreshToken');
-        if (refreshToken) {
-          const response = await axios.post(`${API_URL}/auth/refresh`, {
-            refreshToken,
-          });
+        if (typeof window !== 'undefined') {
+          const refreshToken = localStorage.getItem('refreshToken');
+          if (refreshToken) {
+            const response = await axios.post(`${API_URL}/auth/refresh`, {
+              refreshToken,
+            });
 
-          const { accessToken } = response.data;
-          localStorage.setItem('accessToken', accessToken);
+            const { accessToken } = response.data;
+            localStorage.setItem('accessToken', accessToken);
 
-          originalRequest.headers.Authorization = `Bearer ${accessToken}`;
-          return api(originalRequest);
+            originalRequest.headers.Authorization = `Bearer ${accessToken}`;
+            return api(originalRequest);
+          }
         }
       } catch (refreshError) {
         // Refresh failed, logout user
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('refreshToken');
-        window.location.href = '/auth/login';
+        if (typeof window !== 'undefined') {
+          localStorage.removeItem('accessToken');
+          localStorage.removeItem('refreshToken');
+          window.location.href = '/auth/login';
+        }
       }
     }
 
