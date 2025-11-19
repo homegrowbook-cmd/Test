@@ -1,0 +1,174 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum GrowPhase {
+  SEEDLING
+  VEGETATIVE
+  FLOWERING
+  DRYING
+  CURING
+}
+
+model User {
+  id            String   @id @default(uuid())
+  email         String   @unique
+  username      String   @unique
+  password      String
+  role          Role     @default(USER)
+  emailVerified Boolean  @default(false)
+  avatar        String?
+  bio           String?
+  website       String?
+  instagram     String?
+  twitter       String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  runs          Run[]
+  entries       Entry[]
+  comments      Comment[]
+  likes         Like[]
+  followers     Follow[]  @relation("UserFollowers")
+  following     Follow[]  @relation("UserFollowing")
+  refreshTokens RefreshToken[]
+
+  @@map("users")
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@map("refresh_tokens")
+}
+
+model Run {
+  id          String     @id @default(uuid())
+  title       String
+  description String?
+  strainName  String
+  strainType  String?
+  isPublic    Boolean    @default(true)
+  
+  // Setup data
+  lightType   String?
+  lightWatts  Int?
+  medium      String?
+  nutrients   String?
+  
+  // Metadata
+  startDate   DateTime   @default(now())
+  endDate     DateTime?
+  phase       GrowPhase  @default(SEEDLING)
+  
+  userId      String
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  entries     Entry[]
+  comments    Comment[]
+  likes       Like[]
+  
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  @@map("runs")
+}
+
+model Entry {
+  id          String   @id @default(uuid())
+  title       String
+  content     String?
+  dayNumber   Int
+  weekNumber  Int
+  
+  // Measurements
+  temperature Float?
+  humidity    Float?
+  vpd         Float?
+  ec          Float?
+  ph          Float?
+  ppfd        Int?
+  
+  // Images
+  images      String[] @default([])
+  
+  runId       String
+  run         Run      @relation(fields: [runId], references: [id], onDelete: Cascade)
+  
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  comments    Comment[]
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("entries")
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  content   String
+  
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  runId     String?
+  run       Run?     @relation(fields: [runId], references: [id], onDelete: Cascade)
+  
+  entryId   String?
+  entry     Entry?   @relation(fields: [entryId], references: [id], onDelete: Cascade)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("comments")
+}
+
+model Like {
+  id        String   @id @default(uuid())
+  
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  runId     String
+  run       Run      @relation(fields: [runId], references: [id], onDelete: Cascade)
+  
+  createdAt DateTime @default(now())
+
+  @@unique([userId, runId])
+  @@map("likes")
+}
+
+model Follow {
+  id          String   @id @default(uuid())
+  
+  followerId  String
+  follower    User     @relation("UserFollowing", fields: [followerId], references: [id], onDelete: Cascade)
+  
+  followingId String
+  following   User     @relation("UserFollowers", fields: [followingId], references: [id], onDelete: Cascade)
+  
+  createdAt   DateTime @default(now())
+
+  @@unique([followerId, followingId])
+  @@map("follows")
+}
