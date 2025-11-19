@@ -6,6 +6,8 @@ import Link from 'next/link';
 import api from '@/lib/api';
 import { Run, Entry } from '@/types';
 import { useAuthStore } from '@/store/authStore';
+import PhaseIndicator from '@/components/runs/PhaseIndicator';
+import EntryTimeline from '@/components/entries/EntryTimeline';
 
 export default function RunDetailClient() {
   const router = useRouter();
@@ -153,9 +155,7 @@ export default function RunDetailClient() {
               >
                 👤 {run.user?.username || 'Unknown'}
               </Link>
-              <span className={`px-3 py-1 rounded-full text-sm ${getPhaseColor(run.phase)}`}>
-                {run.phase}
-              </span>
+              <PhaseIndicator phase={run.phase} />
             </div>
           </div>
 
@@ -264,72 +264,19 @@ export default function RunDetailClient() {
           )}
         </div>
 
-        {entries.length === 0 ? (
+        {entries.length === 0 && isOwner ? (
           <div className="card text-center py-12">
             <p className="text-gray-600 dark:text-gray-400 mb-4">
               No entries yet. Start documenting your grow!
             </p>
-            {isOwner && (
-              <Link href={`/runs/${run.id}/entries/new`} className="btn-primary">
-                Create First Entry
-              </Link>
-            )}
+            <Link href={`/runs/${run.id}/entries/new`} className="btn-primary">
+              Create First Entry
+            </Link>
           </div>
         ) : (
-          <div className="space-y-4">
-            {entries.map((entry) => (
-              <Link key={entry.id} href={`/runs/${run.id}/entries/${entry.id}`}>
-                <div className="card hover:shadow-lg transition-shadow cursor-pointer">
-                  <div className="flex justify-between items-start mb-3">
-                    <div>
-                      <h3 className="text-xl font-semibold">{entry.title}</h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        Day {entry.dayNumber} • Week {entry.weekNumber}
-                      </p>
-                    </div>
-                    <p className="text-sm text-gray-500">
-                      {new Date(entry.createdAt).toLocaleDateString()}
-                    </p>
-                  </div>
-
-                  {entry.content && (
-                    <p className="text-gray-700 dark:text-gray-300 line-clamp-2 mb-3">
-                      {entry.content}
-                    </p>
-                  )}
-
-                  {/* Measurements */}
-                  {(entry.temperature || entry.humidity || entry.ph || entry.ec) && (
-                    <div className="flex gap-4 text-sm text-gray-600 dark:text-gray-400">
-                      {entry.temperature && <span>🌡️ {entry.temperature}°C</span>}
-                      {entry.humidity && <span>💧 {entry.humidity}%</span>}
-                      {entry.ph && <span>pH {entry.ph}</span>}
-                      {entry.ec && <span>EC {entry.ec}</span>}
-                    </div>
-                  )}
-                </div>
-              </Link>
-            ))}
-          </div>
+          <EntryTimeline entries={entries} runId={run.id} />
         )}
       </div>
     </div>
   );
-}
-
-function getPhaseColor(phase: string) {
-  switch (phase) {
-    case 'SEEDLING':
-      return 'bg-yellow-200 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200';
-    case 'VEGETATIVE':
-      return 'bg-green-200 text-green-800 dark:bg-green-900 dark:text-green-200';
-    case 'FLOWERING':
-      return 'bg-purple-200 text-purple-800 dark:bg-purple-900 dark:text-purple-200';
-    case 'DRYING':
-      return 'bg-orange-200 text-orange-800 dark:bg-orange-900 dark:text-orange-200';
-    case 'CURING':
-      return 'bg-blue-200 text-blue-800 dark:bg-blue-900 dark:text-blue-200';
-    default:
-      return 'bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200';
-  }
 }

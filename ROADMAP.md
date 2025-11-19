@@ -87,35 +87,35 @@
 **Ziel**: Nutzer können ihren ersten kompletten Grow dokumentieren
 
 #### Meilenstein 1.1: Run Management UI (2 Wochen)
-- [ ] **Create Run Form**
+- ✅ **Create Run Form**
   - Formular mit allen Pflichtfeldern (Titel, Strain, Setup)
   - Validierung und Fehlerbehandlung
   - Bildupload für Strain-Foto
-- [ ] **Run List View**
+- ✅ **Run List View**
   - Übersicht aller eigenen Runs
   - Filter nach Phase und Datum
   - Suchfunktion
-- [ ] **Run Detail View**
+- ✅ **Run Detail View**
   - Alle Run-Informationen anzeigen
   - Edit/Delete Funktionen
   - Timeline der Entries
-- [ ] **Run Edit Form**
+- ✅ **Run Edit Form**
   - Bestehende Runs bearbeiten
   - Phase manuell ändern können
 
 **Erfolgskriterium**: User kann einen neuen Grow anlegen und dessen Details sehen/bearbeiten.
 
 #### Meilenstein 1.2: Entry Management UI (2 Wochen)
-- [ ] **Create Entry Form**
+- ✅ **Create Entry Form**
   - Tag/Woche Nummer
   - Titel und Beschreibung
   - Messungen (Temp, Humidity, VPD, pH, EC, PPFD)
   - Multiple Image Upload
-- [ ] **Entry List View**
+- ✅ **Entry List View**
   - Chronologische Liste aller Einträge
   - Mini-Vorschau mit Hauptbild
   - Sortierung und Filterung
-- [ ] **Entry Detail View**
+- ✅ **Entry Detail View**
   - Vollständige Anzeige des Eintrags
   - Bildgalerie mit Zoom
   - Messungen übersichtlich dargestellt
@@ -126,12 +126,12 @@
 **Erfolgskriterium**: User kann tägliche/wöchentliche Updates mit Bildern und Daten erstellen.
 
 #### Meilenstein 1.3: Image & Media Handling (1 Woche)
-- [ ] **Image Upload Component**
+- ✅ **Image Upload Component**
   - Drag & Drop Interface
   - Multiple File Upload
   - Preview vor dem Upload
   - Progress Bar
-- [ ] **Image Gallery Component**
+- ✅ **Image Gallery Component**
   - Grid/List Ansicht
   - Lightbox/Modal für Vollansicht
   - Zoom Funktion
@@ -144,12 +144,12 @@
 **Erfolgskriterium**: User kann einfach Bilder hochladen und in einer Galerie betrachten.
 
 #### Meilenstein 1.4: Measurements & Data (1 Woche)
-- [ ] **Measurement Input UI**
+- ✅ **Measurement Input UI**
   - Benutzerfreundliche Eingabefelder
   - Unit-Anzeige (°C, %, pH, etc.)
   - Optional/Required Kennzeichnung
   - Validierung der Werte
-- [ ] **Measurement Display**
+- ✅ **Measurement Display**
   - Übersichtliche Darstellung
   - Farb-Codierung (optimal/warning)
   - Verlaufs-Charts (optional)
@@ -160,7 +160,7 @@
 **Erfolgskriterium**: User kann alle wichtigen Messwerte einfach eingeben und sehen.
 
 #### Meilenstein 1.5: Phase Tracking (1 Woche)
-- [ ] **Phase Indicator**
+- ✅ **Phase Indicator**
   - Visueller Status der aktuellen Phase
   - Badge/Icon pro Phase
   - Phasen-Historie
@@ -391,20 +391,20 @@
 ## 🎯 Prioritäten & Quick Wins
 
 ### Sofortige Priorität (Diese Woche)
-1. ✅ Roadmap erstellen ← **Du bist hier!**
-2. [ ] Run Create Form implementieren
-3. [ ] Run List View implementieren
-4. [ ] Entry Create Form implementieren
+1. ✅ Roadmap erstellen
+2. ✅ Run Create Form implementieren
+3. ✅ Run List View implementieren
+4. ✅ Entry Create Form implementieren
 
 ### Quick Wins (Nächste 2 Wochen)
-- [ ] Image Upload Component
-- [ ] Run Detail View mit Timeline
-- [ ] Basic Measurement Input
-- [ ] Phase Badge/Indicator
+- ✅ Image Upload Component
+- ✅ Run Detail View mit Timeline
+- ✅ Basic Measurement Input
+- ✅ Phase Badge/Indicator
 
 ### Mittelfristig (Nächste 4 Wochen)
-- [ ] Entry List & Detail Views
-- [ ] Image Gallery mit Lightbox
+- ✅ Entry List & Detail Views
+- ✅ Image Gallery mit Lightbox
 - [ ] Statistics Dashboard
 - [ ] Search & Filter
 
@@ -416,20 +416,20 @@ Ein User kann seinen ersten Grow als "vollständig dokumentiert" betrachten, wen
 
 ### Minimum Requirements
 1. ✅ User hat einen Account erstellt
-2. [ ] User hat einen Run erstellt mit:
+2. ✅ User hat einen Run erstellt mit:
    - Titel und Beschreibung
    - Strain-Information
    - Setup-Details (Licht, Medium, Nährstoffe)
    - Start-Datum
-3. [ ] User hat mindestens 5 Entries erstellt mit:
+3. ✅ User hat mindestens 5 Entries erstellt mit:
    - Titel und Text
    - Tag/Woche Nummer
    - Mindestens 1 Bild pro Entry
    - Mindestens 3 Messwerte pro Entry
-4. [ ] User hat verschiedene Phasen durchlaufen:
+4. ✅ User hat verschiedene Phasen durchlaufen:
    - Seedling → Vegetative → Flowering
-5. [ ] User kann seine Entries in einer Timeline sehen
-6. [ ] User kann seinen Run bearbeiten und löschen
+5. ✅ User kann seine Entries in einer Timeline sehen
+6. ✅ User kann seinen Run bearbeiten und löschen
 
 ### Optional (Nice to Have)
 - [ ] User hat Harvest-Daten eingegeben
@@ -446,40 +446,40 @@ Ein User kann seinen ersten Grow als "vollständig dokumentiert" betrachten, wen
 ```bash
 # Frontend Komponenten erstellen
 frontend/src/app/runs/
-  ├── new/page.tsx           # Neuen Run erstellen
-  ├── [id]/page.tsx          # Run Details
+  ├── new/page.tsx           # ✅ Neuen Run erstellen
+  ├── [id]/page.tsx          # ✅ Run Details
   ├── [id]/edit/page.tsx     # Run bearbeiten
-  └── page.tsx               # Run Liste
+  └── page.tsx               # ✅ Run Liste
 
 frontend/src/components/runs/
-  ├── RunForm.tsx            # Wiederverwendbares Formular
-  ├── RunCard.tsx            # Run Vorschau Karte
-  ├── RunList.tsx            # Liste von Runs
-  └── PhaseIndicator.tsx     # Phase Badge
+  ├── RunForm.tsx            # ✅ Wiederverwendbares Formular
+  ├── RunCard.tsx            # ✅ Run Vorschau Karte
+  ├── RunList.tsx            # ✅ Liste von Runs
+  └── PhaseIndicator.tsx     # ✅ Phase Badge
 ```
 
 ### Woche 3-4: Entry Management UI
 ```bash
 # Entry Komponenten
 frontend/src/app/runs/[id]/entries/
-  ├── new/page.tsx           # Neuer Entry
-  └── [entryId]/page.tsx     # Entry Details
+  ├── new/page.tsx           # ✅ Neuer Entry
+  └── [entryId]/page.tsx     # ✅ Entry Details
 
 frontend/src/components/entries/
-  ├── EntryForm.tsx          # Entry Formular
-  ├── EntryCard.tsx          # Entry Vorschau
-  ├── EntryTimeline.tsx      # Timeline Ansicht
-  └── MeasurementInput.tsx   # Messwert-Eingabe
+  ├── EntryForm.tsx          # ✅ Entry Formular
+  ├── EntryCard.tsx          # ✅ Entry Vorschau
+  ├── EntryTimeline.tsx      # ✅ Timeline Ansicht
+  └── MeasurementInput.tsx   # ✅ Messwert-Eingabe
 ```
 
 ### Woche 5-6: Image & Media
 ```bash
 # Image Komponenten
 frontend/src/components/media/
-  ├── ImageUpload.tsx        # Upload Component
-  ├── ImageGallery.tsx       # Galerie
-  ├── ImageModal.tsx         # Lightbox
-  └── ImagePreview.tsx       # Vorschau
+  ├── ImageUpload.tsx        # ✅ Upload Component
+  ├── ImageGallery.tsx       # ✅ Galerie
+  ├── ImageModal.tsx         # ✅ Lightbox
+  └── ImagePreview.tsx       # ✅ Vorschau
 ```
 
 ### Woche 7: Testing & Polish
