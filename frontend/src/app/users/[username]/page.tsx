@@ -1,8 +1,8 @@
 import UserProfileClient from './UserProfileClient';
 
-// Required for static export
-export function generateStaticParams() {
-  return [];
+export async function generateStaticParams() {
+  // Return placeholder for static export compatibility
+  return [{ username: 'placeholder' }];
 }
 
 export default function UserProfilePage() {
