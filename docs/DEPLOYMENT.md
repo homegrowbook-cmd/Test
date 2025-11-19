@@ -49,7 +49,7 @@ docker-compose up -d
 
 1. Create Heroku app
 ```bash
-heroku create growdiaries-api
+heroku create homegrowbook-api
 ```
 
 2. Add PostgreSQL addon
@@ -224,17 +224,17 @@ docker-compose up -d
 Add to crontab:
 ```bash
 # Daily backup at 2 AM
-0 2 * * * docker exec growdiaries-db pg_dump -U growdiaries growdiaries > /backups/db-$(date +\%Y\%m\%d).sql
+0 2 * * * docker exec homegrowbook-db pg_dump -U homegrowbook homegrowbook > /backups/db-$(date +\%Y\%m\%d).sql
 ```
 
 ### Manual Backup
 
 ```bash
 # Export
-docker exec growdiaries-db pg_dump -U growdiaries growdiaries > backup.sql
+docker exec homegrowbook-db pg_dump -U homegrowbook homegrowbook > backup.sql
 
 # Import
-docker exec -i growdiaries-db psql -U growdiaries growdiaries < backup.sql
+docker exec -i homegrowbook-db psql -U homegrowbook homegrowbook < backup.sql
 ```
 
 ## Monitoring

@@ -23,7 +23,7 @@ async function bootstrap() {
 
   // Swagger/OpenAPI setup
   const config = new DocumentBuilder()
-    .setTitle('GrowDiaries 2.0 API')
+    .setTitle('homegrowbook 2.0 API')
     .setDescription('Open Grow Log Platform API Documentation')
     .setVersion('1.0')
     .addBearerAuth()

@@ -1,7 +1,7 @@
 {
-  "name": "growdiaries-backend",
+  "name": "homegrowbook-backend",
   "version": "1.0.0",
-  "description": "GrowDiaries 2.0 - Backend API",
+  "description": "homegrowbook 2.0 - Backend API",
   "author": "",
   "private": true,
   "license": "MIT",

@@ -6,7 +6,7 @@ export default function Home() {
       {/* Hero Section */}
       <div className="text-center mb-16">
         <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary-600 to-green-400 bg-clip-text text-transparent">
-          GrowDiaries 2.0
+          homegrowbook 2.0
         </h1>
         <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
           Track, Share, and Learn from Your Growing Journey

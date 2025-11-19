@@ -1,4 +1,4 @@
-# 🌿 GrowDiaries 2.0 - Open Grow Log Platform
+# 🌿 homegrowbook 2.0 - Open Grow Log Platform
 
 A modern, open-source web application for tracking and sharing your growing journey. Inspired by growdiaries.com but with enhanced features and modern technology.
 
@@ -268,7 +268,7 @@ npm test
 
 #### Backend (.env)
 ```env
-DATABASE_URL=postgresql://user:password@localhost:5432/growdiaries
+DATABASE_URL=postgresql://user:password@localhost:5432/homegrowbook
 JWT_SECRET=your-secret-key
 PORT=4000
 BASE_URL=http://localhost:4000
@@ -367,4 +367,4 @@ For security concerns, please open an issue in the repository.
 
 ---
 
-Built with ❤️ by the GrowDiaries community
+Built with ❤️ by the homegrowbook community

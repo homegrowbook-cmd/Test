@@ -1,6 +1,6 @@
-# Contributing to GrowDiaries 2.0
+# Contributing to homegrowbook 2.0
 
-Thank you for your interest in contributing to GrowDiaries 2.0! We welcome contributions from everyone.
+Thank you for your interest in contributing to homegrowbook 2.0! We welcome contributions from everyone.
 
 ## How to Contribute
 
@@ -183,4 +183,4 @@ Contributors will be recognized in:
 - Release notes
 - The contributors page
 
-Thank you for contributing to GrowDiaries 2.0! 🌿
+Thank you for contributing to homegrowbook 2.0! 🌿
