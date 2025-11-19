@@ -193,7 +193,7 @@ async function main() {
 
   await prisma.comment.create({
     data: {
-      content: 'Nice work! What's your light schedule during flowering?',
+      content: 'Nice work! What is your light schedule during flowering?',
       userId: user3.id,
       runId: run1.id,
     },
