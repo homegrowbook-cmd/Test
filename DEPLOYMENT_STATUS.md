@@ -1,8 +1,8 @@
-# 🚀 GrowDiaries 2.0 - Deployment Status
+# 🚀 homegrowbook 2.0 - Deployment Status
 
 ## ✅ Site is Ready to Deploy!
 
-The GrowDiaries 2.0 frontend has been fixed and is ready for deployment to GitHub Pages.
+The homegrowbook 2.0 frontend has been fixed and is ready for deployment to GitHub Pages.
 
 ### 📍 Main Site URL
 

@@ -1,4 +1,4 @@
-GrowDiaries 2.0 - Project Structure
+homegrowbook 2.0 - Project Structure
 ====================================
 
 Root Directory

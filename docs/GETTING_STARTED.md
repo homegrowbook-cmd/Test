@@ -1,6 +1,6 @@
-# Getting Started with GrowDiaries 2.0
+# Getting Started with homegrowbook 2.0
 
-This guide will help you get GrowDiaries 2.0 up and running on your local machine.
+This guide will help you get homegrowbook 2.0 up and running on your local machine.
 
 ## Prerequisites
 
@@ -51,12 +51,12 @@ This will start:
 ### 4. Login with Test Account
 
 The database is seeded with test accounts:
-- **Email**: alice@growdiaries.com
+- **Email**: alice@homegrowbook.com
 - **Password**: password123
 
 Other test accounts:
-- bob@growdiaries.com / password123
-- charlie@growdiaries.com / password123
+- bob@homegrowbook.com / password123
+- charlie@homegrowbook.com / password123
 
 ### 5. Stop Services
 
@@ -92,7 +92,7 @@ cp .env.example .env
 
 Edit `.env` file and update the database URL:
 ```env
-DATABASE_URL="postgresql://USERNAME:PASSWORD@localhost:5432/growdiaries?schema=public"
+DATABASE_URL="postgresql://USERNAME:PASSWORD@localhost:5432/homegrowbook?schema=public"
 JWT_SECRET="your-super-secret-key-change-this"
 PORT=4000
 BASE_URL="http://localhost:4000"
@@ -102,11 +102,11 @@ FRONTEND_URL="http://localhost:3000"
 4. **Create PostgreSQL database**
 ```bash
 # Using psql
-createdb growdiaries
+createdb homegrowbook
 
 # Or using SQL
 psql -U postgres
-CREATE DATABASE growdiaries;
+CREATE DATABASE homegrowbook;
 \q
 ```
 

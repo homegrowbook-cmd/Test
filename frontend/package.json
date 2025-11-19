@@ -1,7 +1,7 @@
 {
-  "name": "growdiaries-frontend",
+  "name": "homegrowbook-frontend",
   "version": "1.0.0",
-  "description": "GrowDiaries 2.0 - Frontend",
+  "description": "homegrowbook 2.0 - Frontend",
   "private": true,
   "scripts": {
     "dev": "next dev",

@@ -4,17 +4,17 @@ services:
   # PostgreSQL Database
   postgres:
     image: postgres:15-alpine
-    container_name: growdiaries-db
+    container_name: homegrowbook-db
     environment:
-      POSTGRES_USER: growdiaries
-      POSTGRES_PASSWORD: growdiaries
-      POSTGRES_DB: growdiaries
+      POSTGRES_USER: homegrowbook
+      POSTGRES_PASSWORD: homegrowbook
+      POSTGRES_DB: homegrowbook
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U growdiaries"]
+      test: ["CMD-SHELL", "pg_isready -U homegrowbook"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -24,9 +24,9 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: growdiaries-backend
+    container_name: homegrowbook-backend
     environment:
-      DATABASE_URL: postgresql://growdiaries:growdiaries@postgres:5432/growdiaries?schema=public
+      DATABASE_URL: postgresql://homegrowbook:homegrowbook@postgres:5432/homegrowbook?schema=public
       JWT_SECRET: your-secret-key-change-in-production
       PORT: 4000
       BASE_URL: http://localhost:4000
@@ -50,7 +50,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: growdiaries-frontend
+    container_name: homegrowbook-frontend
     environment:
       NEXT_PUBLIC_API_URL: http://localhost:4000
     ports:

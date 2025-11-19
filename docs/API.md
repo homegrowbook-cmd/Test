@@ -3,7 +3,7 @@
 ## Base URL
 
 Development: `http://localhost:4000`
-Production: `https://api.growdiaries.example.com`
+Production: `https://api.homegrowbook.example.com`
 
 ## Authentication
 
