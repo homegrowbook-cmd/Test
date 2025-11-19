@@ -53,8 +53,9 @@ export default function NewRunPage() {
     setLoading(true);
 
     try {
+      const { startDate, ...rest } = formData;
       const payload = {
-        ...formData,
+        ...rest,
         lightWatts: formData.lightWatts ? parseFloat(formData.lightWatts) : undefined,
       };
 
