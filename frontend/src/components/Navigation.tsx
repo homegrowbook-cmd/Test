@@ -22,6 +22,9 @@ export default function Navigation() {
             <Link href="/runs" className="hover:text-primary-600 transition-colors">
               Explore
             </Link>
+            <Link href="/diaries" className="hover:text-primary-600 transition-colors">
+              Tagebücher
+            </Link>
             <Link href="/runs/trending" className="hover:text-primary-600 transition-colors">
               Trending
             </Link>
@@ -30,6 +33,9 @@ export default function Navigation() {
               <>
                 <Link href="/runs/new" className="hover:text-primary-600 transition-colors">
                   New Diary
+                </Link>
+                <Link href="/new-run" className="hover:text-primary-600 transition-colors">
+                  Neues Tagebuch
                 </Link>
                 <Link href={`/users/${user.username}`} className="hover:text-primary-600 transition-colors">
                   Profile
@@ -71,6 +77,9 @@ export default function Navigation() {
               <Link href="/runs" className="hover:text-primary-600 transition-colors">
                 Explore
               </Link>
+              <Link href="/diaries" className="hover:text-primary-600 transition-colors">
+                Tagebücher
+              </Link>
               <Link href="/runs/trending" className="hover:text-primary-600 transition-colors">
                 Trending
               </Link>
@@ -79,6 +88,9 @@ export default function Navigation() {
                 <>
                   <Link href="/runs/new" className="hover:text-primary-600 transition-colors">
                     New Diary
+                  </Link>
+                  <Link href="/new-run" className="hover:text-primary-600 transition-colors">
+                    Neues Tagebuch
                   </Link>
                   <Link href={`/users/${user.username}`} className="hover:text-primary-600 transition-colors">
                     Profile

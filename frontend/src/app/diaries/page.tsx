@@ -1,0 +1,267 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import api from '@/lib/api';
+import { Run } from '@/types';
+
+// Mock data for demo purposes when API is not available
+const mockRuns: Run[] = [
+  {
+    id: '1',
+    title: 'First Indoor Grow - Blue Dream',
+    description: 'My first attempt at growing Blue Dream indoors. Using a 2x2 tent with LED lighting. Excited to document this journey!',
+    strainName: 'Blue Dream',
+    strainType: 'Sativa Dominant Hybrid',
+    isPublic: true,
+    lightType: 'LED',
+    lightWatts: 240,
+    medium: 'Soil',
+    nutrients: 'General Hydroponics',
+    phase: 'VEGETATIVE',
+    startDate: '2025-10-15T00:00:00Z',
+    userId: '1',
+    user: { id: '1', email: 'grower1@example.com', username: 'GreenThumb420', role: 'user', createdAt: '2025-10-01T00:00:00Z' },
+    createdAt: '2025-10-15T00:00:00Z',
+    updatedAt: '2025-11-19T00:00:00Z',
+    _count: { entries: 12, likes: 24, comments: 8 }
+  },
+  {
+    id: '2',
+    title: 'Organic Outdoor Garden - Multiple Strains',
+    description: 'Growing several strains organically in my backyard. Using compost tea and natural pest control methods.',
+    strainName: 'Mixed (OG Kush, Northern Lights, Girl Scout Cookies)',
+    strainType: 'Mixed',
+    isPublic: true,
+    lightType: 'Natural Sunlight',
+    medium: 'Living Soil',
+    nutrients: 'Organic Compost Tea',
+    phase: 'FLOWERING',
+    startDate: '2025-05-01T00:00:00Z',
+    userId: '2',
+    user: { id: '2', email: 'grower2@example.com', username: 'OrganicGrower', role: 'user', createdAt: '2025-04-15T00:00:00Z' },
+    createdAt: '2025-05-01T00:00:00Z',
+    updatedAt: '2025-11-19T00:00:00Z',
+    _count: { entries: 45, likes: 89, comments: 34 }
+  },
+  {
+    id: '3',
+    title: 'Hydroponic Setup - Gorilla Glue #4',
+    description: 'Testing out a DWC hydroponic system for the first time with GG4. Closely monitoring EC and pH levels daily.',
+    strainName: 'Gorilla Glue #4',
+    strainType: 'Hybrid',
+    isPublic: true,
+    lightType: 'LED',
+    lightWatts: 480,
+    medium: 'Hydroponic DWC',
+    nutrients: 'Advanced Nutrients',
+    phase: 'FLOWERING',
+    startDate: '2025-09-01T00:00:00Z',
+    userId: '3',
+    user: { id: '3', email: 'grower3@example.com', username: 'HydroMaster', role: 'user', createdAt: '2025-08-01T00:00:00Z' },
+    createdAt: '2025-09-01T00:00:00Z',
+    updatedAt: '2025-11-19T00:00:00Z',
+    _count: { entries: 28, likes: 56, comments: 19 }
+  },
+  {
+    id: '4',
+    title: 'Seedling Stage - Purple Haze',
+    description: 'Just started germinating Purple Haze seeds. This strain has been on my wish list for years!',
+    strainName: 'Purple Haze',
+    strainType: 'Sativa',
+    isPublic: true,
+    lightType: 'CFL',
+    lightWatts: 150,
+    medium: 'Coco Coir',
+    nutrients: 'Canna Coco',
+    phase: 'SEEDLING',
+    startDate: '2025-11-10T00:00:00Z',
+    userId: '4',
+    user: { id: '4', email: 'grower4@example.com', username: 'NewbiePro', role: 'user', createdAt: '2025-11-01T00:00:00Z' },
+    createdAt: '2025-11-10T00:00:00Z',
+    updatedAt: '2025-11-19T00:00:00Z',
+    _count: { entries: 3, likes: 12, comments: 5 }
+  },
+  {
+    id: '5',
+    title: 'Drying & Curing - White Widow Harvest',
+    description: 'Just harvested my White Widow plants. Now in the drying phase. Can\'t wait to cure these beautiful buds!',
+    strainName: 'White Widow',
+    strainType: 'Hybrid',
+    isPublic: true,
+    lightType: 'HPS',
+    lightWatts: 600,
+    medium: 'Soil',
+    nutrients: 'Fox Farm Trio',
+    phase: 'DRYING',
+    startDate: '2025-06-15T00:00:00Z',
+    endDate: '2025-11-10T00:00:00Z',
+    userId: '5',
+    user: { id: '5', email: 'grower5@example.com', username: 'VeteranGrower', role: 'user', createdAt: '2025-01-01T00:00:00Z' },
+    createdAt: '2025-06-15T00:00:00Z',
+    updatedAt: '2025-11-19T00:00:00Z',
+    _count: { entries: 52, likes: 145, comments: 67 }
+  },
+  {
+    id: '6',
+    title: 'Micro Grow - Auto Northern Lights',
+    description: 'Growing in a small PC case setup. Autoflower strain perfect for this micro environment.',
+    strainName: 'Auto Northern Lights',
+    strainType: 'Indica Auto',
+    isPublic: true,
+    lightType: 'LED',
+    lightWatts: 65,
+    medium: 'Coco Perlite Mix',
+    nutrients: 'BioBizz',
+    phase: 'FLOWERING',
+    startDate: '2025-10-01T00:00:00Z',
+    userId: '6',
+    user: { id: '6', email: 'grower6@example.com', username: 'MicroGrower', role: 'user', createdAt: '2025-09-15T00:00:00Z' },
+    createdAt: '2025-10-01T00:00:00Z',
+    updatedAt: '2025-11-19T00:00:00Z',
+    _count: { entries: 18, likes: 34, comments: 15 }
+  }
+];
+
+export default function DiariesPage() {
+  const [runs, setRuns] = useState<Run[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [usingMockData, setUsingMockData] = useState(false);
+
+  useEffect(() => {
+    fetchRuns();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page]);
+
+  const fetchRuns = async () => {
+    try {
+      setLoading(true);
+      const response = await api.get('/runs', {
+        params: { page, limit: 12 },
+      });
+      setRuns(response.data.runs);
+      setTotalPages(response.data.pagination.totalPages);
+      setUsingMockData(false);
+    } catch (error) {
+      console.error('Failed to fetch runs:', error);
+      // Use mock data as fallback for demo purposes
+      setRuns(mockRuns);
+      setTotalPages(1);
+      setUsingMockData(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading && page === 1) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-center">Loading...</div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="container mx-auto px-4 py-8">
+      {usingMockData && (
+        <div className="mb-6 p-4 bg-blue-100 dark:bg-blue-900 border border-blue-300 dark:border-blue-700 rounded-lg">
+          <p className="text-blue-800 dark:text-blue-200 text-center">
+            <strong>Demo Mode:</strong> Showing example diaries. Connect to a backend API to see real data.
+          </p>
+        </div>
+      )}
+      
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-4xl font-bold">Tagebücher</h1>
+        <Link href="/new-run" className="btn-primary">
+          + Neues Tagebuch
+        </Link>
+      </div>
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {runs.map((run) => (
+          <Link key={run.id} href={`/run/${run.id}`}>
+            <div className="card hover:shadow-xl transition-shadow cursor-pointer h-full">
+              <div className="flex items-start justify-between mb-3">
+                <h3 className="text-xl font-semibold line-clamp-2">{run.title}</h3>
+                <span className={`px-2 py-1 text-xs rounded-full ${getPhaseColor(run.phase)}`}>
+                  {run.phase}
+                </span>
+              </div>
+
+              <div className="mb-4">
+                <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">
+                  <strong>Strain:</strong> {run.strainName}
+                </div>
+                {run.strainType && (
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                    {run.strainType}
+                  </div>
+                )}
+              </div>
+
+              {run.description && (
+                <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                  {run.description}
+                </p>
+              )}
+
+              <div className="mt-auto pt-4 border-t border-gray-200 dark:border-gray-700">
+                <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
+                  <span>👤 {run.user?.username || 'Unknown'}</span>
+                  <div className="flex gap-3">
+                    <span>❤️ {run._count?.likes || 0}</span>
+                    <span>💬 {run._count?.comments || 0}</span>
+                    <span>📝 {run._count?.entries || 0}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="flex justify-center gap-2 mt-8">
+          <button
+            onClick={() => setPage(Math.max(1, page - 1))}
+            disabled={page === 1}
+            className="btn-secondary disabled:opacity-50"
+          >
+            Zurück
+          </button>
+          <span className="px-4 py-2">
+            Seite {page} von {totalPages}
+          </span>
+          <button
+            onClick={() => setPage(Math.min(totalPages, page + 1))}
+            disabled={page === totalPages}
+            className="btn-secondary disabled:opacity-50"
+          >
+            Weiter
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function getPhaseColor(phase: string) {
+  switch (phase) {
+    case 'SEEDLING':
+      return 'bg-yellow-200 text-yellow-800';
+    case 'VEGETATIVE':
+      return 'bg-green-200 text-green-800';
+    case 'FLOWERING':
+      return 'bg-purple-200 text-purple-800';
+    case 'DRYING':
+      return 'bg-orange-200 text-orange-800';
+    case 'CURING':
+      return 'bg-blue-200 text-blue-800';
+    default:
+      return 'bg-gray-200 text-gray-800';
+  }
+}
