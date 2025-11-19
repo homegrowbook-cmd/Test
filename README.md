@@ -285,16 +285,34 @@ NEXT_PUBLIC_API_URL=http://localhost:4000
 
 ### Frontend to GitHub Pages
 
+The frontend is automatically deployed to GitHub Pages when changes are pushed to the `main` branch.
+
+#### Initial Setup
+
 1. **Configure repository settings**
    - Go to Settings > Pages
-   - Set source to "GitHub Actions"
+   - Set **Source** to "GitHub Actions"
+   - The site will be available at `https://<username>.github.io/<repository-name>/`
 
 2. **Push to main branch**
 ```bash
 git push origin main
 ```
 
-The frontend will be automatically deployed to GitHub Pages.
+#### How it works
+
+- The CI/CD pipeline (`ci-cd.yml`) automatically builds and deploys the frontend
+- Uses Next.js static export (`output: 'export'`)
+- Deploys to GitHub Pages using official GitHub Actions
+- The website will be accessible at the GitHub Pages URL (e.g., `https://homegrowbook-cmd.github.io/Test/`)
+
+#### Troubleshooting
+
+If the GitHub Pages site shows only the README:
+1. Verify the workflow ran successfully in the Actions tab
+2. Ensure "GitHub Actions" is selected as the source in Settings > Pages
+3. Check that the `deploy-frontend` job completed successfully
+4. The deployment may take a few minutes to propagate
 
 ### Backend Deployment
 
