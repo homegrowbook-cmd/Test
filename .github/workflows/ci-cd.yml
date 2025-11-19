@@ -109,6 +109,7 @@ jobs:
         env:
           NEXT_PUBLIC_API_URL: https://growdiaries-api.railway.app
           NODE_ENV: production
+          STATIC_EXPORT: true
           
       - name: Setup Pages
         uses: actions/configure-pages@v5

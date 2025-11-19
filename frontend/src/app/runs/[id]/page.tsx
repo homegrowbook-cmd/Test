@@ -72,19 +72,27 @@ export default function RunDetailPage() {
       if (isLiked) {
         await api.delete(`/likes/runs/${runId}`);
         setIsLiked(false);
-        if (run) {
+        if (run && run._count) {
           setRun({
             ...run,
-            _count: { ...run._count, likes: (run._count?.likes || 1) - 1 },
+            _count: { 
+              entries: run._count.entries || 0,
+              comments: run._count.comments || 0,
+              likes: (run._count.likes || 1) - 1 
+            },
           });
         }
       } else {
         await api.post(`/likes/runs/${runId}`);
         setIsLiked(true);
-        if (run) {
+        if (run && run._count) {
           setRun({
             ...run,
-            _count: { ...run._count, likes: (run._count?.likes || 0) + 1 },
+            _count: { 
+              entries: run._count.entries || 0,
+              comments: run._count.comments || 0,
+              likes: (run._count.likes || 0) + 1 
+            },
           });
         }
       }

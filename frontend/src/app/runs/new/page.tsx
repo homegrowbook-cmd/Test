@@ -1,13 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/authStore';
 import api from '@/lib/api';
 
 export default function NewRunPage() {
   const router = useRouter();
-  const { user } = useAuthStore();
+  const { user, isHydrated } = useAuthStore();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -25,9 +25,18 @@ export default function NewRunPage() {
     isPublic: true,
   });
 
-  if (!user) {
-    router.push('/auth/login');
-    return null;
+  useEffect(() => {
+    if (isHydrated && !user) {
+      router.push('/auth/login');
+    }
+  }, [isHydrated, user, router]);
+
+  if (!isHydrated || !user) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-center">Loading...</div>
+      </div>
+    );
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
