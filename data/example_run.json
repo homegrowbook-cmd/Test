@@ -1,0 +1,602 @@
+{
+  "metadata": {
+    "runId": "550e8400-e29b-41d4-a716-446655440000",
+    "title": "Northern Lights Auto - Complete Indoor Grow",
+    "description": "Komplettes Grow-Tagebuch für Northern Lights Autoflower. Verwendung von LED-Vollspektrum und organischem Boden.",
+    "strain": {
+      "name": "Northern Lights Auto",
+      "type": "Indica-dominant autoflower",
+      "breeder": "Royal Queen Seeds",
+      "genetics": "Afghan × Thai"
+    },
+    "setup": {
+      "environment": "Indoor Growbox",
+      "tentSize": "120x120x200 cm",
+      "lightType": "LED Full Spectrum",
+      "lightWatts": 300,
+      "lightBrand": "Spider Farmer SF-2000",
+      "medium": "Organic Soil Mix",
+      "potSize": "11 Liter",
+      "nutrients": "BioBizz Organic Line",
+      "ventilation": "Inline Fan 420 m³/h + Carbon Filter"
+    },
+    "dates": {
+      "startDate": "2024-01-15T00:00:00.000Z",
+      "germinationDate": "2024-01-17T00:00:00.000Z",
+      "vegetativeDate": "2024-01-22T00:00:00.000Z",
+      "floweringDate": "2024-02-19T00:00:00.000Z",
+      "harvestDate": "2024-04-10T00:00:00.000Z",
+      "dryingStartDate": "2024-04-10T00:00:00.000Z",
+      "curingStartDate": "2024-04-24T00:00:00.000Z"
+    },
+    "currentPhase": "CURING",
+    "totalDays": 86,
+    "isPublic": true,
+    "createdAt": "2024-01-15T10:30:00.000Z",
+    "updatedAt": "2024-04-24T15:45:00.000Z"
+  },
+  "dailyLogs": [
+    {
+      "day": 1,
+      "week": 1,
+      "date": "2024-01-15T00:00:00.000Z",
+      "phase": "SEEDLING",
+      "title": "Tag 1 - Samen in Wasser gelegt",
+      "description": "Samen für 24 Stunden in destilliertem Wasser eingeweicht. Temperatur bei 22°C gehalten.",
+      "images": [
+        "https://example.com/images/day001_seed_soak.jpg"
+      ],
+      "measurements": {
+        "temperature": 22.0,
+        "humidity": 65.0,
+        "vpd": 0.75,
+        "ph": null,
+        "ec": null,
+        "ppfd": null,
+        "lightHours": 0
+      },
+      "notes": "Samen sehen gesund aus, keine Beschädigungen sichtbar"
+    },
+    {
+      "day": 3,
+      "week": 1,
+      "date": "2024-01-17T00:00:00.000Z",
+      "phase": "SEEDLING",
+      "title": "Tag 3 - Keimung erfolgreich",
+      "description": "Wurzel ist ca. 1cm lang. Samen in vorbereiteten Topf mit Erde gepflanzt.",
+      "images": [
+        "https://example.com/images/day003_germinated.jpg",
+        "https://example.com/images/day003_planted.jpg"
+      ],
+      "measurements": {
+        "temperature": 24.0,
+        "humidity": 70.0,
+        "vpd": 0.82,
+        "ph": 6.5,
+        "ec": 0.4,
+        "ppfd": 200,
+        "lightHours": 18
+      },
+      "notes": "Erde leicht feucht gehalten, Licht auf 30% Intensität"
+    },
+    {
+      "day": 7,
+      "week": 1,
+      "date": "2024-01-21T00:00:00.000Z",
+      "phase": "SEEDLING",
+      "title": "Tag 7 - Erste echte Blätter",
+      "description": "Keimblätter voll entwickelt, erste echte Blätter sichtbar. Pflanze steht stabil.",
+      "images": [
+        "https://example.com/images/day007_seedling_01.jpg",
+        "https://example.com/images/day007_seedling_02.jpg"
+      ],
+      "measurements": {
+        "temperature": 24.5,
+        "humidity": 68.0,
+        "vpd": 0.85,
+        "ph": 6.4,
+        "ec": 0.5,
+        "ppfd": 250,
+        "lightHours": 18
+      },
+      "notes": "Erste leichte Bewässerung mit pH-angepasstem Wasser"
+    },
+    {
+      "day": 14,
+      "week": 2,
+      "date": "2024-01-28T00:00:00.000Z",
+      "phase": "VEGETATIVE",
+      "title": "Tag 14 - Vegetative Phase beginnt",
+      "description": "Pflanze zeigt kräftiges Wachstum, 4 Blattpaare entwickelt. LST vorbereitet.",
+      "images": [
+        "https://example.com/images/day014_veg_start_01.jpg",
+        "https://example.com/images/day014_veg_start_02.jpg",
+        "https://example.com/images/day014_veg_start_03.jpg"
+      ],
+      "measurements": {
+        "temperature": 25.0,
+        "humidity": 60.0,
+        "vpd": 1.05,
+        "ph": 6.3,
+        "ec": 0.8,
+        "ppfd": 400,
+        "lightHours": 18
+      },
+      "notes": "Erste Düngergabe mit BioBizz Bio-Grow (0.5ml/L)"
+    },
+    {
+      "day": 21,
+      "week": 3,
+      "date": "2024-02-04T00:00:00.000Z",
+      "phase": "VEGETATIVE",
+      "title": "Tag 21 - LST gestartet",
+      "description": "Low Stress Training begonnen. Haupttrieb vorsichtig zur Seite gebogen für bessere Lichtverteilung.",
+      "images": [
+        "https://example.com/images/day021_lst_01.jpg",
+        "https://example.com/images/day021_lst_02.jpg"
+      ],
+      "measurements": {
+        "temperature": 25.5,
+        "humidity": 58.0,
+        "vpd": 1.12,
+        "ph": 6.2,
+        "ec": 1.0,
+        "ppfd": 500,
+        "lightHours": 18
+      },
+      "notes": "Pflanze reagiert gut auf LST, kein Stress sichtbar"
+    },
+    {
+      "day": 30,
+      "week": 5,
+      "date": "2024-02-13T00:00:00.000Z",
+      "phase": "VEGETATIVE",
+      "title": "Tag 30 - Kräftiges vegetatives Wachstum",
+      "description": "Pflanze füllt sich gut aus, viele Seitentriebe entwickeln sich. Canopy ist gleichmäßig.",
+      "images": [
+        "https://example.com/images/day030_veg_full_01.jpg",
+        "https://example.com/images/day030_veg_full_02.jpg",
+        "https://example.com/images/day030_canopy.jpg"
+      ],
+      "measurements": {
+        "temperature": 26.0,
+        "humidity": 55.0,
+        "vpd": 1.25,
+        "ph": 6.1,
+        "ec": 1.2,
+        "ppfd": 600,
+        "lightHours": 18
+      },
+      "notes": "Düngung auf 1ml/L Bio-Grow erhöht, zusätzlich 0.5ml/L Bio-Heaven"
+    },
+    {
+      "day": 35,
+      "week": 5,
+      "date": "2024-02-18T00:00:00.000Z",
+      "phase": "VEGETATIVE",
+      "title": "Tag 35 - Pre-Flowering Anzeichen",
+      "description": "Erste weiße Härchen an den Nodien sichtbar. Blütephase steht kurz bevor.",
+      "images": [
+        "https://example.com/images/day035_preflower_01.jpg",
+        "https://example.com/images/day035_pistils.jpg"
+      ],
+      "measurements": {
+        "temperature": 25.5,
+        "humidity": 53.0,
+        "vpd": 1.28,
+        "ph": 6.2,
+        "ec": 1.3,
+        "ppfd": 650,
+        "lightHours": 18
+      },
+      "notes": "Umstellung der Nährstoffe vorbereitet für Blütephase"
+    },
+    {
+      "day": 42,
+      "week": 6,
+      "date": "2024-02-25T00:00:00.000Z",
+      "phase": "FLOWERING",
+      "title": "Tag 42 - Blütephase offiziell gestartet",
+      "description": "Deutliche Blütenbildung an allen Seitentrieben. Umstellung auf Blütedünger komplett.",
+      "images": [
+        "https://example.com/images/day042_flowering_start_01.jpg",
+        "https://example.com/images/day042_flowering_start_02.jpg",
+        "https://example.com/images/day042_bud_sites.jpg"
+      ],
+      "measurements": {
+        "temperature": 24.0,
+        "humidity": 50.0,
+        "vpd": 1.20,
+        "ph": 6.3,
+        "ec": 1.5,
+        "ppfd": 700,
+        "lightHours": 18
+      },
+      "notes": "Bio-Grow reduziert, Bio-Bloom auf 1ml/L, Top-Max 0.5ml/L hinzugefügt"
+    },
+    {
+      "day": 49,
+      "week": 7,
+      "date": "2024-03-03T00:00:00.000Z",
+      "phase": "FLOWERING",
+      "title": "Tag 49 - Buds schwellen an",
+      "description": "Deutliches Wachstum der Blüten. Trichome beginnen sich zu entwickeln. Terpengeruch wird stärker.",
+      "images": [
+        "https://example.com/images/day049_buds_swelling_01.jpg",
+        "https://example.com/images/day049_buds_swelling_02.jpg",
+        "https://example.com/images/day049_trichomes.jpg"
+      ],
+      "measurements": {
+        "temperature": 23.5,
+        "humidity": 48.0,
+        "vpd": 1.22,
+        "ph": 6.4,
+        "ec": 1.7,
+        "ppfd": 750,
+        "lightHours": 18
+      },
+      "notes": "Bio-Bloom auf 2ml/L erhöht, starker süßlicher Geruch"
+    },
+    {
+      "day": 56,
+      "week": 8,
+      "date": "2024-03-10T00:00:00.000Z",
+      "phase": "FLOWERING",
+      "title": "Tag 56 - Massive Blütenentwicklung",
+      "description": "Buds werden dicht und schwer. Trichomproduktion in vollem Gange. Pflanze riecht intensiv.",
+      "images": [
+        "https://example.com/images/day056_massive_buds_01.jpg",
+        "https://example.com/images/day056_massive_buds_02.jpg",
+        "https://example.com/images/day056_cola_closeup.jpg",
+        "https://example.com/images/day056_trichomes_macro.jpg"
+      ],
+      "measurements": {
+        "temperature": 23.0,
+        "humidity": 47.0,
+        "vpd": 1.20,
+        "ph": 6.5,
+        "ec": 1.8,
+        "ppfd": 800,
+        "lightHours": 18
+      },
+      "notes": "Peak der Blütephase, Top-Max auf 1ml/L erhöht"
+    },
+    {
+      "day": 63,
+      "week": 9,
+      "date": "2024-03-17T00:00:00.000Z",
+      "phase": "FLOWERING",
+      "title": "Tag 63 - Reifephase",
+      "description": "Trichome werden milchig. Erste bernsteinfarbene Trichome sichtbar (ca. 5%). Blätter beginnen zu vergilben.",
+      "images": [
+        "https://example.com/images/day063_ripening_01.jpg",
+        "https://example.com/images/day063_trichomes_milky.jpg",
+        "https://example.com/images/day063_yellowing.jpg"
+      ],
+      "measurements": {
+        "temperature": 22.5,
+        "humidity": 46.0,
+        "vpd": 1.15,
+        "ph": 6.6,
+        "ec": 1.6,
+        "ppfd": 800,
+        "lightHours": 18
+      },
+      "notes": "Düngung leicht reduziert, natürliche Vergilbung normal in dieser Phase"
+    },
+    {
+      "day": 70,
+      "week": 10,
+      "date": "2024-03-24T00:00:00.000Z",
+      "phase": "FLOWERING",
+      "title": "Tag 70 - Flushing gestartet",
+      "description": "Start des Spülens mit reinem pH-angepasstem Wasser. Trichome ca. 70% milchig, 30% klar.",
+      "images": [
+        "https://example.com/images/day070_flushing_01.jpg",
+        "https://example.com/images/day070_trichomes_check.jpg"
+      ],
+      "measurements": {
+        "temperature": 22.0,
+        "humidity": 45.0,
+        "vpd": 1.12,
+        "ph": 6.5,
+        "ec": 0.3,
+        "ppfd": 750,
+        "lightHours": 18
+      },
+      "notes": "Nur noch reines Wasser, keine Nährstoffe mehr"
+    },
+    {
+      "day": 77,
+      "week": 11,
+      "date": "2024-03-31T00:00:00.000Z",
+      "phase": "FLOWERING",
+      "title": "Tag 77 - Erntefenster",
+      "description": "Trichome optimal: 80% milchig, 15% bernstein, 5% klar. Perfekter Zeitpunkt für Indica-dominante Wirkung.",
+      "images": [
+        "https://example.com/images/day077_harvest_ready_01.jpg",
+        "https://example.com/images/day077_harvest_ready_02.jpg",
+        "https://example.com/images/day077_trichomes_perfect.jpg",
+        "https://example.com/images/day077_whole_plant.jpg"
+      ],
+      "measurements": {
+        "temperature": 21.5,
+        "humidity": 44.0,
+        "vpd": 1.08,
+        "ph": 6.5,
+        "ec": 0.2,
+        "ppfd": 700,
+        "lightHours": 18
+      },
+      "notes": "Bereit für die Ernte in den nächsten Tagen"
+    },
+    {
+      "day": 86,
+      "week": 13,
+      "date": "2024-04-09T00:00:00.000Z",
+      "phase": "FLOWERING",
+      "title": "Tag 86 - Letzter Tag vor Ernte",
+      "description": "48 Stunden Dunkelphase beginnt. Letzte Bewässerung war vor 2 Tagen. Pflanze ist bereit.",
+      "images": [
+        "https://example.com/images/day086_pre_harvest_01.jpg",
+        "https://example.com/images/day086_final_buds.jpg"
+      ],
+      "measurements": {
+        "temperature": 20.0,
+        "humidity": 42.0,
+        "vpd": 0.98,
+        "ph": null,
+        "ec": null,
+        "ppfd": 0,
+        "lightHours": 0
+      },
+      "notes": "48h Dunkelphase für erhöhte Terpene und Harz"
+    }
+  ],
+  "harvestData": {
+    "harvestDate": "2024-04-10T00:00:00.000Z",
+    "wetWeight": 285,
+    "wetWeightUnit": "grams",
+    "estimatedDryWeight": 71,
+    "dryWeight": 68,
+    "dryWeightUnit": "grams",
+    "trimMethod": "Wet Trim",
+    "notes": "Gute Harzproduktion, dichte Buds, sehr aromatisch"
+  },
+  "dryingData": {
+    "startDate": "2024-04-10T00:00:00.000Z",
+    "endDate": "2024-04-24T00:00:00.000Z",
+    "duration": 14,
+    "durationUnit": "days",
+    "environment": {
+      "temperature": 18.0,
+      "humidity": 55.0,
+      "vpd": 0.75,
+      "airflow": "Low circulation fan",
+      "darkness": true
+    },
+    "notes": "Langsame Trocknung für optimalen Geschmack und Geruch"
+  },
+  "curingData": {
+    "startDate": "2024-04-24T00:00:00.000Z",
+    "jarType": "Mason Jars (1L)",
+    "numberOfJars": 3,
+    "burpingSchedule": "2x täglich für Woche 1, dann 1x täglich",
+    "environment": {
+      "temperature": 18.0,
+      "humidity": 62.0,
+      "darkness": true
+    },
+    "notes": "Ziel: 62% Luftfeuchtigkeit in den Gläsern halten"
+  },
+  "measurements": {
+    "overview": {
+      "totalMeasurements": 14,
+      "measurementTypes": [
+        "temperature",
+        "humidity",
+        "vpd",
+        "ph",
+        "ec",
+        "ppfd"
+      ]
+    },
+    "ranges": {
+      "temperature": {
+        "min": 20.0,
+        "max": 26.0,
+        "average": 23.5,
+        "unit": "°C"
+      },
+      "humidity": {
+        "min": 42.0,
+        "max": 70.0,
+        "average": 54.4,
+        "unit": "%"
+      },
+      "vpd": {
+        "min": 0.75,
+        "max": 1.28,
+        "average": 1.08,
+        "unit": "kPa"
+      },
+      "ph": {
+        "min": 6.1,
+        "max": 6.6,
+        "average": 6.4,
+        "unit": "pH"
+      },
+      "ec": {
+        "min": 0.2,
+        "max": 1.8,
+        "average": 1.0,
+        "unit": "mS/cm"
+      },
+      "ppfd": {
+        "min": 0,
+        "max": 800,
+        "average": 529,
+        "unit": "μmol/m²/s"
+      }
+    },
+    "byPhase": {
+      "SEEDLING": {
+        "temperature": {
+          "average": 23.5,
+          "optimal": true
+        },
+        "humidity": {
+          "average": 67.7,
+          "optimal": true
+        },
+        "vpd": {
+          "average": 0.81,
+          "optimal": true
+        }
+      },
+      "VEGETATIVE": {
+        "temperature": {
+          "average": 25.5,
+          "optimal": true
+        },
+        "humidity": {
+          "average": 56.5,
+          "optimal": true
+        },
+        "vpd": {
+          "average": 1.17,
+          "optimal": true
+        }
+      },
+      "FLOWERING": {
+        "temperature": {
+          "average": 22.6,
+          "optimal": true
+        },
+        "humidity": {
+          "average": 45.9,
+          "optimal": true
+        },
+        "vpd": {
+          "average": 1.14,
+          "optimal": true
+        }
+      }
+    }
+  },
+  "statistics": {
+    "timeline": {
+      "totalDays": 86,
+      "seedlingDays": 7,
+      "vegetativeDays": 28,
+      "floweringDays": 51,
+      "totalWeeks": 13
+    },
+    "growth": {
+      "finalHeight": 65,
+      "finalHeightUnit": "cm",
+      "numberOfColas": 8,
+      "numberOfBudSites": 24,
+      "stretchFactor": 2.3
+    },
+    "yield": {
+      "wetWeight": 285,
+      "dryWeight": 68,
+      "dryWeightPerWatt": 0.23,
+      "dryWeightPerDay": 0.79,
+      "unit": "grams"
+    },
+    "resources": {
+      "totalWaterUsed": 45,
+      "waterUnit": "liters",
+      "totalElectricity": 110.9,
+      "electricityUnit": "kWh",
+      "averageDailyElectricity": 1.29,
+      "nutrients": {
+        "bioGrow": {
+          "amount": 60,
+          "unit": "ml"
+        },
+        "bioBloom": {
+          "amount": 120,
+          "unit": "ml"
+        },
+        "topMax": {
+          "amount": 45,
+          "unit": "ml"
+        },
+        "bioHeaven": {
+          "amount": 30,
+          "unit": "ml"
+        }
+      }
+    },
+    "environmental": {
+      "averageTemperature": 23.5,
+      "averageHumidity": 54.4,
+      "averageVPD": 1.08,
+      "averagePPFD": 529,
+      "totalLightHours": 1512,
+      "DLI": {
+        "average": 34.1,
+        "unit": "mol/m²/day"
+      }
+    },
+    "quality": {
+      "trichomeMaturity": "80% milchig, 15% bernstein",
+      "aroma": "Süß, erdig, mit Pinien-Noten",
+      "appearance": "Dichte, harzige Buds mit violetten Akzenten",
+      "overallRating": 9.0,
+      "potency": "Stark",
+      "effects": "Entspannend, sedierend, schmerzlindernd"
+    },
+    "problems": {
+      "encountered": [
+        {
+          "day": 28,
+          "issue": "Leichte Nährstoffspitzen-Verbrennung",
+          "severity": "Minor",
+          "resolution": "EC leicht reduziert, Problem behoben"
+        },
+        {
+          "day": 58,
+          "issue": "Minimaler Thrips-Befall",
+          "severity": "Minor",
+          "resolution": "Neemöl-Behandlung, erfolgreich beseitigt"
+        }
+      ],
+      "totalIssues": 2,
+      "majorIssues": 0,
+      "minorIssues": 2
+    },
+    "success": {
+      "germinationRate": 100,
+      "survivalRate": 100,
+      "targetYieldAchieved": true,
+      "noMajorProblems": true,
+      "recommendStrain": true,
+      "wouldRepeat": true,
+      "overallSuccess": "Sehr erfolgreich"
+    }
+  },
+  "community": {
+    "likes": 127,
+    "comments": 43,
+    "followers": 89,
+    "views": 2453,
+    "shares": 18
+  },
+  "tags": [
+    "Northern Lights",
+    "Autoflower",
+    "Indoor",
+    "LED",
+    "Organic",
+    "BioBizz",
+    "First Grow",
+    "Indica",
+    "LST"
+  ],
+  "version": "1.0.0",
+  "schemaVersion": "2.0"
+}
