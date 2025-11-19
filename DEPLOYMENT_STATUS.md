@@ -17,6 +17,7 @@ Once deployed via GitHub Actions, your site will be available at:
 3. ✅ **Added .nojekyll File** - Ensures GitHub Pages serves Next.js assets correctly
 4. ✅ **Fixed ESLint Errors** - Corrected apostrophe escaping and React hooks warnings
 5. ✅ **Updated CI/CD Workflow** - Set production environment and proper API URL
+6. ✅ **Migrated to Official GitHub Pages Actions** - Using `actions/deploy-pages@v4` for reliable deployment
 
 ### 📸 Screenshots
 
@@ -46,9 +47,21 @@ Once deployed via GitHub Actions, your site will be available at:
 
 #### Automatic Deployment (Recommended)
 
-1. The GitHub Actions workflow will automatically deploy to GitHub Pages when you push to the `main` branch
-2. Merge this PR to trigger deployment
-3. Go to repository Settings → Pages to verify it's set to "GitHub Actions"
+1. The GitHub Actions workflow uses official GitHub Pages actions for reliable deployment
+2. When you push to the `main` branch, the workflow automatically:
+   - Builds the Next.js frontend
+   - Uploads artifacts using `actions/upload-pages-artifact@v3`
+   - Deploys using `actions/deploy-pages@v4`
+3. Go to repository Settings → Pages and ensure it's set to "GitHub Actions"
+4. The deployment typically takes 2-5 minutes
+
+#### Troubleshooting
+
+If the site shows only the README:
+1. Check Actions tab to verify the workflow ran successfully
+2. Ensure "GitHub Actions" is selected as source in Settings → Pages (not "Deploy from a branch")
+3. Verify the `deploy-frontend` job completed without errors
+4. Wait a few minutes for changes to propagate to GitHub's CDN
 
 #### Manual Deployment
 
@@ -118,6 +131,6 @@ Deploy the backend following the instructions in `docs/DEPLOYMENT.md`. Recommend
 
 **Status:** ✅ Ready for Production Deployment
 
-**Last Updated:** 2025-11-19
+**Last Updated:** 2024-11-19
 
 **Build Status:** ✅ Passing (All issues resolved)
