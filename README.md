@@ -82,6 +82,18 @@ docker-compose up -d
 - Backend API: http://localhost:4000
 - API Documentation: http://localhost:4000/api
 
+### 🔑 Test Login Credentials
+
+After seeding the database, you can use these test accounts to login:
+
+| Email | Username | Password |
+|-------|----------|----------|
+| alice@homegrowbook.com | alice_grower | password123 |
+| bob@homegrowbook.com | bob_cultivator | password123 |
+| charlie@homegrowbook.com | charlie_green | password123 |
+
+> **Note:** You can login with either email or username. These accounts are created automatically when you run `npm run prisma:seed` in the backend directory.
+
 ### Local Development Setup
 
 #### Backend Setup
