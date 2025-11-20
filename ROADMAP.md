@@ -164,7 +164,7 @@
   - Visueller Status der aktuellen Phase
   - Badge/Icon pro Phase
   - Phasen-Historie
-- [ ] **Phase Transition**
+- ✅ **Phase Transition**
   - Manuelle Phasenänderung
   - Automatische Vorschläge basierend auf Tagen
   - Notiz bei Phasenwechsel

@@ -7,6 +7,7 @@ import api from '@/lib/api';
 import { Run, Entry } from '@/types';
 import { useAuthStore } from '@/store/authStore';
 import PhaseIndicator from '@/components/runs/PhaseIndicator';
+import PhaseTransition from '@/components/runs/PhaseTransition';
 import EntryTimeline from '@/components/entries/EntryTimeline';
 
 export default function RunDetailClient() {
@@ -113,6 +114,31 @@ export default function RunDetailClient() {
       router.push('/runs');
     } catch (err: any) {
       alert(err.response?.data?.message || 'Failed to delete run');
+    }
+  };
+
+  const handlePhaseChange = async (newPhase: string, note?: string) => {
+    try {
+      await api.put(`/runs/${runId}`, { phase: newPhase });
+      // Refresh run data
+      await fetchRunDetails();
+      
+      // Optionally create an entry to document the phase change
+      if (note) {
+        try {
+          await api.post(`/runs/${runId}/entries`, {
+            title: `Phase Change: ${newPhase}`,
+            content: note,
+            dayNumber: entries.length > 0 ? Math.max(...entries.map(e => e.dayNumber)) + 1 : 1,
+            weekNumber: entries.length > 0 ? Math.max(...entries.map(e => e.weekNumber)) : 1,
+          });
+          await fetchEntries();
+        } catch (entryErr) {
+          console.error('Failed to create phase change entry:', entryErr);
+        }
+      }
+    } catch (err: any) {
+      throw err; // Let the component handle the error
     }
   };
 
@@ -252,6 +278,16 @@ export default function RunDetailClient() {
           </div>
         )}
       </div>
+
+      {/* Phase Transition - Only for owner */}
+      {isOwner && (
+        <div className="mb-8">
+          <PhaseTransition
+            currentPhase={run.phase}
+            onPhaseChange={handlePhaseChange}
+          />
+        </div>
+      )}
 
       {/* Entries Section */}
       <div className="mb-8">
