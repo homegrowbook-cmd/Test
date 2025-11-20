@@ -119,7 +119,7 @@
   - Vollständige Anzeige des Eintrags
   - Bildgalerie mit Zoom
   - Messungen übersichtlich dargestellt
-- [ ] **Entry Edit/Delete**
+- ✅ **Entry Edit/Delete**
   - Einträge nachträglich bearbeiten
   - Löschen mit Bestätigung
 
