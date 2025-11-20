@@ -153,7 +153,7 @@
   - Übersichtliche Darstellung
   - Farb-Codierung (optimal/warning)
   - Verlaufs-Charts (optional)
-- [ ] **VPD Calculator**
+- ✅ **VPD Calculator**
   - Automatische VPD-Berechnung aus Temp & Humidity
   - Anzeige des optimalen Bereichs
 

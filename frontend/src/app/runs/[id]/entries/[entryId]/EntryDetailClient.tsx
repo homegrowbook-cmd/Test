@@ -6,6 +6,7 @@ import Link from 'next/link';
 import api from '@/lib/api';
 import { Entry, Run } from '@/types';
 import { useAuthStore } from '@/store/authStore';
+import VPDStatus from '@/components/entries/VPDStatus';
 
 export default function EntryDetailClient() {
   const router = useRouter();
@@ -171,7 +172,7 @@ export default function EntryDetailClient() {
             {entry.vpd !== null && entry.vpd !== undefined && (
               <div>
                 <label className="text-sm text-gray-600 dark:text-gray-400">VPD</label>
-                <p className="text-2xl font-bold">{entry.vpd} kPa</p>
+                <VPDStatus vpd={entry.vpd} phase={run?.phase} showRecommendation={false} />
               </div>
             )}
 
