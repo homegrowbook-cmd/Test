@@ -31,6 +31,15 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
+    // Check if in demo mode
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('accessToken');
+      if (token === 'demo-token') {
+        // In demo mode, don't try to refresh or redirect
+        return Promise.reject(error);
+      }
+    }
+
     const originalRequest = error.config;
 
     if (error.response?.status === 401 && !originalRequest._retry) {

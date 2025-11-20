@@ -15,11 +15,13 @@ interface AuthState {
   accessToken: string | null;
   refreshToken: string | null;
   isHydrated: boolean;
+  isDemoMode: boolean;
   login: (emailOrUsername: string, password: string) => Promise<void>;
   register: (email: string, username: string, password: string) => Promise<void>;
   logout: () => void;
   setUser: (user: User) => void;
   setHydrated: () => void;
+  loginDemo: (username: string) => void;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -29,6 +31,7 @@ export const useAuthStore = create<AuthState>()(
       accessToken: null,
       refreshToken: null,
       isHydrated: false,
+      isDemoMode: false,
 
       login: async (emailOrUsername: string, password: string) => {
         const response = await api.post('/auth/login', {
@@ -43,7 +46,47 @@ export const useAuthStore = create<AuthState>()(
           localStorage.setItem('refreshToken', refreshToken);
         }
 
-        set({ user, accessToken, refreshToken });
+        set({ user, accessToken, refreshToken, isDemoMode: false });
+      },
+
+      loginDemo: (username: string) => {
+        const demoUsers: Record<string, User> = {
+          alice_grower: {
+            id: 'demo-alice',
+            email: 'alice@homegrowbook.com',
+            username: 'alice_grower',
+            role: 'USER',
+            avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=alice',
+          },
+          bob_cultivator: {
+            id: 'demo-bob',
+            email: 'bob@homegrowbook.com',
+            username: 'bob_cultivator',
+            role: 'USER',
+            avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=bob',
+          },
+          charlie_green: {
+            id: 'demo-charlie',
+            email: 'charlie@homegrowbook.com',
+            username: 'charlie_green',
+            role: 'USER',
+            avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=charlie',
+          },
+        };
+
+        const user = demoUsers[username] || demoUsers.alice_grower;
+
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('accessToken', 'demo-token');
+          localStorage.setItem('refreshToken', 'demo-refresh-token');
+        }
+
+        set({ 
+          user, 
+          accessToken: 'demo-token', 
+          refreshToken: 'demo-refresh-token',
+          isDemoMode: true 
+        });
       },
 
       register: async (email: string, username: string, password: string) => {
@@ -59,7 +102,7 @@ export const useAuthStore = create<AuthState>()(
           localStorage.removeItem('accessToken');
           localStorage.removeItem('refreshToken');
         }
-        set({ user: null, accessToken: null, refreshToken: null });
+        set({ user: null, accessToken: null, refreshToken: null, isDemoMode: false });
       },
 
       setUser: (user: User) => {
@@ -77,6 +120,7 @@ export const useAuthStore = create<AuthState>()(
         user: state.user,
         accessToken: state.accessToken,
         refreshToken: state.refreshToken,
+        isDemoMode: state.isDemoMode,
       }),
       onRehydrateStorage: () => (state) => {
         state?.setHydrated();

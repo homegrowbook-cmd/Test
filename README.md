@@ -64,6 +64,16 @@ A modern, open-source web application for tracking and sharing your growing jour
 
 ## 🚀 Quick Start
 
+### 🎭 Try Demo Mode (No Backend Required!)
+
+Want to explore the UI without setting up the backend? Try our **Demo Mode**:
+
+1. **Visit**: https://homegrowbook-cmd.github.io/Test/auth/login
+2. **Click** one of the demo user buttons (Alice, Bob, or Charlie)
+3. **Explore** the UI with mock data
+
+📖 **[Read more about Demo Mode →](DEMO_MODE.md)**
+
 ### Using Docker Compose (Recommended)
 
 1. **Clone the repository**
@@ -93,6 +103,14 @@ After seeding the database, you can use these test accounts to login:
 | charlie@homegrowbook.com | charlie_green | password123 |
 
 > **Note:** You can login with either email or username. These accounts are created automatically when you run `npm run prisma:seed` in the backend directory.
+
+### 🎭 Demo Mode (No Backend Required)
+
+Don't want to set up the backend? Try **Demo Mode**!
+
+Visit https://homegrowbook-cmd.github.io/Test/auth/login and click on one of the demo user buttons to explore the UI with mock data.
+
+📖 **[Learn more about Demo Mode →](DEMO_MODE.md)**
 
 ### Local Development Setup
 
