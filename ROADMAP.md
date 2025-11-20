@@ -52,6 +52,12 @@
 - ✅ API Client mit Axios
 - ✅ Responsive Design
 - ✅ GitHub Pages Deployment
+- ✅ **Demo Mode - UI ohne Backend testen!**
+- ✅ Run List/Detail/Edit Views
+- ✅ Entry Create/Detail Views
+- ✅ User Profile Views
+- ✅ Image Upload Components
+- ✅ Measurement Input Components
 
 #### Infrastructure
 - ✅ Docker Compose Setup
@@ -395,18 +401,22 @@
 2. ✅ Run Create Form implementieren
 3. ✅ Run List View implementieren
 4. ✅ Entry Create Form implementieren
+5. ✅ **Demo Mode implementieren - UI jetzt ohne Backend testbar!**
 
 ### Quick Wins (Nächste 2 Wochen)
 - ✅ Image Upload Component
 - ✅ Run Detail View mit Timeline
 - ✅ Basic Measurement Input
 - ✅ Phase Badge/Indicator
+- ✅ Demo-Modus für einfachen UI-Test
 
 ### Mittelfristig (Nächste 4 Wochen)
 - ✅ Entry List & Detail Views
 - ✅ Image Gallery mit Lightbox
+- ✅ User Profile Views
 - [ ] Statistics Dashboard
 - [ ] Search & Filter
+- [ ] Backend API Deployment
 
 ---
 
