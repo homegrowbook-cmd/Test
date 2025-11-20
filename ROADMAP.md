@@ -119,7 +119,7 @@
   - Vollständige Anzeige des Eintrags
   - Bildgalerie mit Zoom
   - Messungen übersichtlich dargestellt
-- [ ] **Entry Edit/Delete**
+- ✅ **Entry Edit/Delete**
   - Einträge nachträglich bearbeiten
   - Löschen mit Bestätigung
 
@@ -153,7 +153,7 @@
   - Übersichtliche Darstellung
   - Farb-Codierung (optimal/warning)
   - Verlaufs-Charts (optional)
-- [ ] **VPD Calculator**
+- ✅ **VPD Calculator**
   - Automatische VPD-Berechnung aus Temp & Humidity
   - Anzeige des optimalen Bereichs
 
@@ -164,7 +164,7 @@
   - Visueller Status der aktuellen Phase
   - Badge/Icon pro Phase
   - Phasen-Historie
-- [ ] **Phase Transition**
+- ✅ **Phase Transition**
   - Manuelle Phasenänderung
   - Automatische Vorschläge basierend auf Tagen
   - Notiz bei Phasenwechsel
