@@ -383,15 +383,16 @@ For support, please open an issue in the GitHub repository.
 Wir haben eine detaillierte Roadmap erstellt, um die Entwicklung bis zum ersten vollständigen Grow-Eintrag zu planen.
 
 📋 **[Siehe vollständige Roadmap](ROADMAP.md)** - Detaillierte Phasen, Meilensteine und Features  
-🎯 **[Siehe Ziele & Sprint-Plan](GOALS.md)** - Kurzfristige Ziele und Checklisten
+🎯 **[Siehe Ziele & Sprint-Plan](GOALS.md)** - Kurzfristige Ziele und Checklisten  
+📊 **[Siehe Status Update](STATUS_UPDATE_NOV_2024.md)** - Aktueller Stand mit Screenshots
 
 ### Nächste Schritte (Q4 2024 - Q1 2025)
-**Phase 1: MVP - Erster Grow möglich**
-- [ ] Run Management UI (Create, List, Detail, Edit)
-- [ ] Entry Management UI (Create, Timeline, Detail)
-- [ ] Image Upload & Gallery
-- [ ] Measurement Input & Display
-- [ ] Phase Tracking
+**Phase 1: MVP - Erster Grow möglich** ✅ **ABGESCHLOSSEN**
+- [x] Run Management UI (Create, List, Detail, Edit)
+- [x] Entry Management UI (Create, Timeline, Detail)
+- [x] Image Upload & Gallery
+- [x] Measurement Input & Display
+- [x] Phase Tracking
 
 **Phase 2: Harvest & Analytics**
 - [ ] Harvest, Drying & Curing Tracking
