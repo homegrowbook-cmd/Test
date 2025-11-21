@@ -10,119 +10,130 @@ export default function Navigation() {
   const { user, logout } = useAuthStore();
 
   return (
-    <nav className="bg-white/95 dark:bg-black/95 backdrop-blur-sm shadow-soft border-b border-gray-200 dark:border-primary-500/20 sticky top-0 z-50">
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 text-2xl font-bold text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-500 transition-all duration-300 transform hover:scale-105">
-            <Image 
-              src="/logo.png" 
-              alt="homegrowbook logo" 
-              width={40} 
-              height={40}
-              className="rounded-lg"
-              priority
-            />
-            <span>homegrowbook</span>
-          </Link>
+    <nav className="sticky top-4 z-50 mx-auto max-w-[1040px] px-4">
+      <div className="flex justify-between items-center gap-4 px-3.5 py-2.5 rounded-lg backdrop-blur-nav border transition-all"
+           style={{
+             background: 'rgba(6, 9, 12, 0.96)',
+             borderColor: 'var(--border-subtle)',
+             boxShadow: 'var(--shadow-nav)'
+           }}>
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2.5 min-w-0 hover:opacity-80 transition-opacity">
+          <Image 
+            src="/logo.png" 
+            alt="homegrowbook logo" 
+            width={32} 
+            height={32}
+            className="rounded-lg flex-shrink-0"
+            priority
+          />
+          <div className="flex flex-col leading-tight min-w-0">
+            <span className="text-base font-semibold tracking-tight" style={{color: 'var(--text-main)'}}>
+              homegrowbook
+            </span>
+            <span className="text-[0.7rem] uppercase tracking-widest" style={{color: 'var(--text-muted)'}}>
+              Smart Indoor Growing
+            </span>
+          </div>
+        </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/runs" className="text-gray-700 dark:text-gray-200 font-semibold hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200 relative group">
-              <span>Explore</span>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 dark:bg-primary-400 transition-all duration-200 group-hover:w-full"></span>
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-2.5">
+          <Link href="/runs" className="btn-ghost">
+            Explore
+          </Link>
+          <Link href="/runs/trending" className="btn-ghost">
+            Trending
+          </Link>
+          
+          {user ? (
+            <>
+              <Link href="/runs/new" className="btn-ghost">
+                New Diary
+              </Link>
+              <Link href={`/users/${user.username}`} className="btn-ghost">
+                Profile
+              </Link>
+              <button
+                onClick={logout}
+                className="btn-ghost"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link href="/auth/login" className="btn-ghost">
+                Login
+              </Link>
+              <Link href="/auth/register" className="btn-accent">
+                Sign Up
+              </Link>
+            </>
+          )}
+        </div>
+
+        {/* Mobile menu button */}
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="md:hidden p-2 rounded-lg hover:bg-white/5 transition-colors"
+          style={{color: 'var(--text-main)'}}
+          aria-label="Toggle menu"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {isMenuOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
+      </div>
+
+      {/* Mobile Navigation */}
+      {isMenuOpen && (
+        <div className="md:hidden mt-2 p-4 rounded-lg backdrop-blur-nav border animate-fade-in"
+             style={{
+               background: 'rgba(6, 9, 12, 0.96)',
+               borderColor: 'var(--border-subtle)',
+               boxShadow: 'var(--shadow-nav)'
+             }}>
+          <div className="flex flex-col gap-2">
+            <Link href="/runs" className="btn-ghost justify-start">
+              Explore
             </Link>
-            <Link href="/runs/trending" className="text-gray-700 dark:text-gray-200 font-semibold hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200 relative group">
-              <span>Trending</span>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 dark:bg-primary-400 transition-all duration-200 group-hover:w-full"></span>
+            <Link href="/runs/trending" className="btn-ghost justify-start">
+              Trending
             </Link>
             
             {user ? (
               <>
-                <Link href="/runs/new" className="text-gray-700 dark:text-gray-200 font-semibold hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200 relative group">
-                  <span>New Diary</span>
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 dark:bg-primary-400 transition-all duration-200 group-hover:w-full"></span>
+                <Link href="/runs/new" className="btn-ghost justify-start">
+                  New Diary
                 </Link>
-                <Link href={`/users/${user.username}`} className="text-gray-700 dark:text-gray-200 font-semibold hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200 relative group">
-                  <span>Profile</span>
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 dark:bg-primary-400 transition-all duration-200 group-hover:w-full"></span>
+                <Link href={`/users/${user.username}`} className="btn-ghost justify-start">
+                  Profile
                 </Link>
                 <button
                   onClick={logout}
-                  className="btn-secondary"
+                  className="btn-ghost justify-start"
                 >
                   Logout
                 </button>
               </>
             ) : (
               <>
-                <Link href="/auth/login" className="text-gray-700 dark:text-gray-200 font-semibold hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-200 relative group">
-                  <span>Login</span>
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 dark:bg-primary-400 transition-all duration-200 group-hover:w-full"></span>
+                <Link href="/auth/login" className="btn-ghost justify-start">
+                  Login
                 </Link>
-                <Link href="/auth/register" className="btn-primary transform hover:scale-105 transition-transform duration-200">
+                <Link href="/auth/register" className="btn-accent justify-start">
                   Sign Up
                 </Link>
               </>
             )}
           </div>
-
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-200 transition-colors"
-            aria-label="Toggle menu"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {isMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
         </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden pb-4 border-t border-gray-200 dark:border-gray-800 mt-2 pt-4 animate-fade-in">
-            <div className="flex flex-col space-y-4">
-              <Link href="/runs" className="text-gray-700 dark:text-gray-200 font-semibold hover:text-primary-600 dark:hover:text-primary-400 transition-colors py-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900">
-                Explore
-              </Link>
-              <Link href="/runs/trending" className="text-gray-700 dark:text-gray-200 font-semibold hover:text-primary-600 dark:hover:text-primary-400 transition-colors py-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900">
-                Trending
-              </Link>
-              
-              {user ? (
-                <>
-                  <Link href="/runs/new" className="text-gray-700 dark:text-gray-200 font-semibold hover:text-primary-600 dark:hover:text-primary-400 transition-colors py-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900">
-                    New Diary
-                  </Link>
-                  <Link href={`/users/${user.username}`} className="text-gray-700 dark:text-gray-200 font-semibold hover:text-primary-600 dark:hover:text-primary-400 transition-colors py-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900">
-                    Profile
-                  </Link>
-                  <button
-                    onClick={logout}
-                    className="btn-secondary text-left"
-                  >
-                    Logout
-                  </button>
-                </>
-              ) : (
-                <>
-                  <Link href="/auth/login" className="text-gray-700 dark:text-gray-200 font-semibold hover:text-primary-600 dark:hover:text-primary-400 transition-colors py-2 px-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-900">
-                    Login
-                  </Link>
-                  <Link href="/auth/register" className="btn-primary text-center">
-                    Sign Up
-                  </Link>
-                </>
-              )}
-            </div>
-          </div>
-        )}
-      </div>
+      )}
     </nav>
   );
 }
