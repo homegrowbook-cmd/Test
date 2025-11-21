@@ -21,6 +21,7 @@ export default function Navigation() {
               width={40} 
               height={40}
               className="rounded-lg"
+              priority
             />
             <span>homegrowbook</span>
           </Link>
