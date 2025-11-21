@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import axios from 'axios';
 import api from '@/lib/api';
 import { useAuthStore } from '@/store/authStore';
 import { User } from '@/types';
@@ -71,14 +72,13 @@ export default function SettingsClient() {
       setUser(updatedUser);
 
       setSuccess('Profile updated successfully!');
-      
-      // Redirect to profile after 2 seconds
-      setTimeout(() => {
-        router.push(`/users/${updatedUser.username}`);
-      }, 2000);
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Failed to update profile:', err);
-      setError(err.response?.data?.message || 'Failed to update profile. Please try again.');
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        setError(err.response.data.message);
+      } else {
+        setError('Failed to update profile. Please try again.');
+      }
     } finally {
       setLoading(false);
     }
