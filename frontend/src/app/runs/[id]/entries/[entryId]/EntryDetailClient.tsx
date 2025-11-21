@@ -53,9 +53,9 @@ export default function EntryDetailClient() {
           isPublic: true,
           startDate: '2024-10-01T00:00:00Z',
           lightType: 'LED',
-          lightWatts: 300,
+          lightWatts: 240,
           medium: 'Soil',
-          nutrients: 'Fox Farm Trio',
+          nutrients: 'General Hydroponics',
           createdAt: '2024-10-01T00:00:00Z',
           updatedAt: '2024-11-15T00:00:00Z',
           user: {
