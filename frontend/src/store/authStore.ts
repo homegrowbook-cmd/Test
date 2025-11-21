@@ -8,6 +8,10 @@ interface User {
   username: string;
   role: string;
   avatar?: string;
+  bio?: string;
+  website?: string;
+  instagram?: string;
+  twitter?: string;
 }
 
 interface AuthState {
