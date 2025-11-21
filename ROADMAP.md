@@ -3,7 +3,7 @@
 > **Ziel**: Eine vollständige, benutzerfreundliche Platform schaffen, die es ermöglicht, den ersten Grow von Anfang bis Ende zu dokumentieren und zu teilen.
 
 **Letzte Aktualisierung**: 21. November 2024  
-**Status**: Phase 1 MVP ✅ **ABGESCHLOSSEN** - Bereit für Phase 2
+**Status**: Phase 2 Meilenstein 2.1 ✅ **ABGESCHLOSSEN** - Harvest Tracking implementiert
 
 ---
 
@@ -18,7 +18,7 @@
 - ✅ Messungen erfassen (Temperatur, Luftfeuchtigkeit, pH, EC, VPD, PPFD)
 - ✅ Wachstumsphasen verfolgen
 - ✅ Community-Features (Likes, Kommentare, Follows)
-- ⚠️ Ernte- und Trocknung-Daten erfassen
+- ✅ Ernte- und Trocknung-Daten erfassen
 - ⚠️ Statistiken und Analysen anzeigen
 - ⚠️ Mobile-optimierte Nutzung
 
@@ -79,7 +79,7 @@
 3. ~~**Image Upload UI**~~ ✅ **ERLEDIGT** - Komponenten vorhanden
 4. ~~**Measurement Input**~~ ✅ **ERLEDIGT** - Mit VPD Auto-Calculator
 5. ~~**Phase Management**~~ ✅ **ERLEDIGT** - Phase Transition UI implementiert
-6. **Harvest Tracking** - Ernte-, Trocknungs- und Curing-Daten (⚠️ Pending)
+6. ~~**Harvest Tracking**~~ ✅ **ERLEDIGT** - Ernte-, Trocknungs- und Curing-Daten (21. Nov 2024)
 7. ~~**Timeline View**~~ ✅ **ERLEDIGT** - Chronologische Entry-Ansicht
 8. **Statistics Dashboard** - Visualisierung von Daten und Fortschritt (⚠️ Pending)
 
@@ -200,31 +200,37 @@
 ### Phase 2: Harvest & Analytics 📊 (Q1 2025)
 **Ziel**: Kompletter Grow-Zyklus inkl. Ernte und Analyse
 
-#### Meilenstein 2.1: Harvest Tracking (2 Wochen)
-- [ ] **Harvest Form**
+#### Meilenstein 2.1: Harvest Tracking (2 Wochen) ✅ **KOMPLETT**
+- ✅ **Harvest Form**
   - Erntedatum
   - Nassgewicht
   - Trim-Methode
-  - Fotos
+  - Fotos (Unterstützung vorhanden)
   - Notizen
-- [ ] **Drying Phase**
+- ✅ **Drying Phase**
   - Start-/Enddatum
   - Umgebungsbedingungen
   - Trocknungsdauer
   - Trockengewicht
-- [ ] **Curing Phase**
+- ✅ **Curing Phase**
   - Start-Datum
   - Glas-Typ und Anzahl
   - Burping Schedule
   - Luftfeuchtigkeit in Gläsern
   - Qualitätsbewertung
-- [ ] **Final Results**
+- ✅ **Final Results**
   - Gesamtertrag
-  - Gramm pro Watt
-  - Gramm pro Tag
-  - Qualitätsbewertung
+  - Gramm pro Watt (automatisch berechnet)
+  - Gramm pro Tag (automatisch berechnet)
+  - Qualitätsbewertung (1-5 Sterne)
 
-**Erfolgskriterium**: User kann Ernte-, Trocknungs- und Curing-Daten erfassen.
+**Erfolgskriterium**: ✅ User kann Ernte-, Trocknungs- und Curing-Daten erfassen.
+
+**Implementierungsdetails**:
+- Backend: Harvest model, CRUD API, automatische Metriken-Berechnung
+- Frontend: Tabbed form interface, display component, integration in Run details
+- Navigation: Harvest section auf Run detail page mit direktem Zugriff
+- Status: Fertiggestellt am 21. November 2024
 
 #### Meilenstein 2.2: Statistics & Analytics (2 Wochen)
 - [ ] **Run Statistics Page**
