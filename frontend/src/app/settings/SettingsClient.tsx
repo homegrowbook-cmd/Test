@@ -6,9 +6,17 @@ import api from '@/lib/api';
 import { useAuthStore } from '@/store/authStore';
 import { User } from '@/types';
 
+interface UpdateUserData {
+  bio?: string;
+  website?: string;
+  instagram?: string;
+  twitter?: string;
+  avatar?: string;
+}
+
 export default function SettingsClient() {
   const router = useRouter();
-  const { user: currentUser, updateUser } = useAuthStore();
+  const { user: currentUser, setUser } = useAuthStore();
 
   const [bio, setBio] = useState('');
   const [website, setWebsite] = useState('');
@@ -18,6 +26,7 @@ export default function SettingsClient() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [avatarError, setAvatarError] = useState(false);
 
   useEffect(() => {
     if (!currentUser) {
@@ -31,6 +40,7 @@ export default function SettingsClient() {
     setInstagram(currentUser.instagram || '');
     setTwitter(currentUser.twitter || '');
     setAvatar(currentUser.avatar || '');
+    setAvatarError(false);
   }, [currentUser, router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -40,7 +50,7 @@ export default function SettingsClient() {
     setLoading(true);
 
     try {
-      const updateData: any = {};
+      const updateData: UpdateUserData = {};
       
       if (bio !== currentUser?.bio) updateData.bio = bio;
       if (website !== currentUser?.website) updateData.website = website;
@@ -58,7 +68,7 @@ export default function SettingsClient() {
       const updatedUser: User = response.data;
 
       // Update user in auth store
-      updateUser(updatedUser);
+      setUser(updatedUser);
 
       setSuccess('Profile updated successfully!');
       
@@ -154,22 +164,28 @@ export default function SettingsClient() {
               <input
                 type="url"
                 value={avatar}
-                onChange={(e) => setAvatar(e.target.value)}
+                onChange={(e) => {
+                  setAvatar(e.target.value);
+                  setAvatarError(false);
+                }}
                 className="input"
                 placeholder="https://example.com/avatar.jpg"
               />
-              {avatar && (
+              {avatar && !avatarError && (
                 <div className="mt-2">
                   <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">Preview:</p>
                   <img 
                     src={avatar} 
                     alt="Avatar preview" 
                     className="w-20 h-20 rounded-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                    }}
+                    onError={() => setAvatarError(true)}
                   />
                 </div>
+              )}
+              {avatarError && (
+                <p className="text-sm text-red-500 dark:text-red-400 mt-1">
+                  Failed to load image preview
+                </p>
               )}
             </div>
 

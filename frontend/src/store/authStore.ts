@@ -24,7 +24,6 @@ interface AuthState {
   register: (email: string, username: string, password: string) => Promise<void>;
   logout: () => void;
   setUser: (user: User) => void;
-  updateUser: (user: User) => void;
   setHydrated: () => void;
   loginDemo: (username: string) => void;
 }
@@ -111,10 +110,6 @@ export const useAuthStore = create<AuthState>()(
       },
 
       setUser: (user: User) => {
-        set({ user });
-      },
-
-      updateUser: (user: User) => {
         set({ user });
       },
 
