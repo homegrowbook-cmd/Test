@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { useAuthStore } from '@/store/authStore';
-import harvestApi, { Harvest } from '@/lib/harvestApi';
+import harvestApi, { HarvestData } from '@/lib/harvestApi';
+import { Harvest, Run } from '@/types';
 import api from '@/lib/api';
 import HarvestForm from '@/components/harvest/HarvestForm';
 import HarvestDisplay from '@/components/harvest/HarvestDisplay';
@@ -18,7 +19,7 @@ export default function HarvestClient() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [harvest, setHarvest] = useState<Harvest | null>(null);
-  const [run, setRun] = useState<any>(null);
+  const [run, setRun] = useState<Run | null>(null);
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
@@ -55,7 +56,7 @@ export default function HarvestClient() {
     }
   };
 
-  const handleSubmit = async (formData: any) => {
+  const handleSubmit = async (formData: HarvestData) => {
     setError('');
     setSuccess('');
     setLoading(true);
@@ -124,7 +125,7 @@ export default function HarvestClient() {
     );
   }
 
-  const canEdit = user && run && user.id === run.userId;
+  const canEdit = !!(user && run && user.id === run.userId);
 
   return (
     <div className="container mx-auto px-4 py-8 max-w-4xl">

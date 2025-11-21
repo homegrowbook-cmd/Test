@@ -1,4 +1,5 @@
 import { api } from './api';
+import { Harvest } from '@/types';
 
 export interface HarvestData {
   harvestDate: string;
@@ -21,15 +22,6 @@ export interface HarvestData {
   finalWeight?: number;
   qualityRating?: number;
   qualityNotes?: string;
-}
-
-export interface Harvest extends HarvestData {
-  id: string;
-  runId: string;
-  yieldPerWatt?: number;
-  yieldPerDay?: number;
-  createdAt: string;
-  updatedAt: string;
 }
 
 export const harvestApi = {

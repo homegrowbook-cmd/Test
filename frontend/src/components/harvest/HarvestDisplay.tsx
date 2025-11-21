@@ -1,30 +1,7 @@
-interface HarvestData {
-  id: string;
-  harvestDate: string;
-  wetWeight?: number;
-  trimMethod?: string;
-  harvestNotes?: string;
-  dryingStartDate?: string;
-  dryingEndDate?: string;
-  dryingTemp?: number;
-  dryingHumidity?: number;
-  dryWeight?: number;
-  dryingNotes?: string;
-  curingStartDate?: string;
-  curingMethod?: string;
-  jarCount?: number;
-  burpingSchedule?: string;
-  curingHumidity?: number;
-  curingNotes?: string;
-  finalWeight?: number;
-  qualityRating?: number;
-  qualityNotes?: string;
-  yieldPerWatt?: number;
-  yieldPerDay?: number;
-}
+import { Harvest } from '@/types';
 
 interface HarvestDisplayProps {
-  harvest: HarvestData;
+  harvest: Harvest;
   onEdit?: () => void;
   onDelete?: () => void;
   canEdit?: boolean;

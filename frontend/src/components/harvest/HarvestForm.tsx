@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { HarvestData } from '@/lib/harvestApi';
 
 interface HarvestFormData {
   harvestDate: string;
@@ -24,7 +25,7 @@ interface HarvestFormData {
 
 interface HarvestFormProps {
   initialData?: Partial<HarvestFormData>;
-  onSubmit: (data: any) => Promise<void>;
+  onSubmit: (data: HarvestData) => Promise<void>;
   onCancel: () => void;
   submitLabel?: string;
   loading?: boolean;
