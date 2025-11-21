@@ -152,6 +152,7 @@ export default function RunDetailClient() {
       console.error('Failed to fetch entries:', err);
       
       // Fallback to mock entries for demo mode
+      // Note: VPD values are intentionally simplified for demo purposes
       const mockEntries: Entry[] = [
         {
           id: `entry-${runId}-1`,
