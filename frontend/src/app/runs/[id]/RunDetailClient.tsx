@@ -340,6 +340,9 @@ export default function RunDetailClient() {
           </div>
 
           <div className="flex gap-2">
+            <Link href={`/runs/${run.id}/statistics`} className="btn-secondary">
+              📊 Statistics
+            </Link>
             {isOwner && (
               <>
                 <Link href={`/runs/${run.id}/edit`} className="btn-secondary">
