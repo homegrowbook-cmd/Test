@@ -41,7 +41,104 @@ export default function RunDetailClient() {
       setError('');
     } catch (err: any) {
       console.error('Failed to fetch run:', err);
-      setError(err.response?.data?.message || 'Failed to load run details');
+      
+      // Fallback to mock data for demo mode
+      const mockRuns: Record<string, Run> = {
+        '1': {
+          id: '1',
+          userId: 'mock-user-1',
+          title: 'First Indoor Grow - Blue Dream',
+          description: 'My first attempt at growing Blue Dream indoors. Using a 2x2 tent with LED lighting. Excited to document this journey!',
+          strainName: 'Blue Dream',
+          strainType: 'Sativa Dominant Hybrid',
+          phase: 'vegetative',
+          isPublic: true,
+          startDate: '2024-10-01T00:00:00Z',
+          lightType: 'LED',
+          lightWatts: 300,
+          medium: 'Soil',
+          nutrients: 'Fox Farm Trio',
+          createdAt: '2024-10-01T00:00:00Z',
+          updatedAt: '2024-11-15T00:00:00Z',
+          user: {
+            id: 'mock-user-1',
+            username: 'GreenThumb420',
+            email: 'greenthumb@example.com',
+            createdAt: '2024-09-01T00:00:00Z',
+            updatedAt: '2024-11-15T00:00:00Z',
+          },
+          _count: {
+            entries: 12,
+            comments: 8,
+            likes: 24,
+          },
+        },
+        '2': {
+          id: '2',
+          userId: 'mock-user-2',
+          title: 'Organic Outdoor Garden - Multiple Strains',
+          description: 'Growing several strains organically in my backyard. Using compost tea and natural pest control methods.',
+          strainName: 'Mixed (OG Kush, Northern Lights, Girl Scout Cookies)',
+          strainType: 'Mixed',
+          phase: 'flowering',
+          isPublic: true,
+          startDate: '2024-05-15T00:00:00Z',
+          lightType: 'Natural Sunlight',
+          medium: 'Outdoor Soil',
+          nutrients: 'Organic Compost Tea',
+          createdAt: '2024-05-15T00:00:00Z',
+          updatedAt: '2024-11-15T00:00:00Z',
+          user: {
+            id: 'mock-user-2',
+            username: 'OrganicGrower',
+            email: 'organic@example.com',
+            createdAt: '2024-05-01T00:00:00Z',
+            updatedAt: '2024-11-15T00:00:00Z',
+          },
+          _count: {
+            entries: 45,
+            comments: 34,
+            likes: 89,
+          },
+        },
+        '3': {
+          id: '3',
+          userId: 'mock-user-3',
+          title: 'Hydroponic Setup - Gorilla Glue #4',
+          description: 'Testing out a DWC hydroponic system for the first time with GG4. Closely monitoring EC and pH levels daily.',
+          strainName: 'Gorilla Glue #4',
+          strainType: 'Hybrid',
+          phase: 'flowering',
+          isPublic: true,
+          startDate: '2024-08-20T00:00:00Z',
+          lightType: 'LED',
+          lightWatts: 600,
+          medium: 'Hydro (DWC)',
+          nutrients: 'General Hydroponics Flora Series',
+          createdAt: '2024-08-20T00:00:00Z',
+          updatedAt: '2024-11-15T00:00:00Z',
+          user: {
+            id: 'mock-user-3',
+            username: 'HydroMaster',
+            email: 'hydro@example.com',
+            createdAt: '2024-08-01T00:00:00Z',
+            updatedAt: '2024-11-15T00:00:00Z',
+          },
+          _count: {
+            entries: 28,
+            comments: 19,
+            likes: 56,
+          },
+        },
+      };
+
+      const mockRun = mockRuns[runId];
+      if (mockRun) {
+        setRun(mockRun);
+        setError('');
+      } else {
+        setError(err.response?.data?.message || 'Failed to load run details');
+      }
     } finally {
       setLoading(false);
     }
@@ -53,6 +150,59 @@ export default function RunDetailClient() {
       setEntries(response.data.entries || response.data);
     } catch (err) {
       console.error('Failed to fetch entries:', err);
+      
+      // Fallback to mock entries for demo mode
+      const mockEntries: Entry[] = [
+        {
+          id: `entry-${runId}-1`,
+          runId: runId,
+          dayNumber: 7,
+          weekNumber: 1,
+          title: 'Week 1 - Seedling Progress',
+          content: 'Seedlings are looking healthy! First true leaves are showing.',
+          temperature: 24,
+          humidity: 65,
+          vpd: 0.8,
+          createdAt: '2024-10-08T00:00:00Z',
+          updatedAt: '2024-10-08T00:00:00Z',
+          images: [],
+        },
+        {
+          id: `entry-${runId}-2`,
+          runId: runId,
+          dayNumber: 14,
+          weekNumber: 2,
+          title: 'Week 2 - Vegetative Growth Begins',
+          content: 'Plants are growing rapidly now. Starting light feeding.',
+          temperature: 25,
+          humidity: 60,
+          vpd: 1.0,
+          ph: 6.2,
+          ec: 0.8,
+          createdAt: '2024-10-15T00:00:00Z',
+          updatedAt: '2024-10-15T00:00:00Z',
+          images: [],
+        },
+        {
+          id: `entry-${runId}-3`,
+          runId: runId,
+          dayNumber: 21,
+          weekNumber: 3,
+          title: 'Week 3 - Bushy Growth',
+          content: 'Plants are getting bushy! Time for some LST training.',
+          temperature: 26,
+          humidity: 58,
+          vpd: 1.1,
+          ph: 6.3,
+          ec: 1.2,
+          ppfd: 400,
+          createdAt: '2024-10-22T00:00:00Z',
+          updatedAt: '2024-10-22T00:00:00Z',
+          images: [],
+        },
+      ];
+      
+      setEntries(mockEntries);
     }
   };
 
