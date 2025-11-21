@@ -39,7 +39,195 @@ export default function EntryDetailClient() {
       setError('');
     } catch (err: any) {
       console.error('Failed to fetch entry:', err);
-      setError(err.response?.data?.message || 'Failed to load entry details');
+      
+      // Fallback to mock data for demo mode
+      const mockRuns: Record<string, Run> = {
+        '1': {
+          id: '1',
+          userId: 'mock-user-1',
+          title: 'First Indoor Grow - Blue Dream',
+          description: 'My first attempt at growing Blue Dream indoors. Using a 2x2 tent with LED lighting. Excited to document this journey!',
+          strainName: 'Blue Dream',
+          strainType: 'Sativa Dominant Hybrid',
+          phase: 'VEGETATIVE',
+          isPublic: true,
+          startDate: '2024-10-01T00:00:00Z',
+          lightType: 'LED',
+          lightWatts: 300,
+          medium: 'Soil',
+          nutrients: 'Fox Farm Trio',
+          createdAt: '2024-10-01T00:00:00Z',
+          updatedAt: '2024-11-15T00:00:00Z',
+          user: {
+            id: 'mock-user-1',
+            username: 'GreenThumb420',
+            email: 'greenthumb@example.com',
+            role: 'USER',
+            createdAt: '2024-09-01T00:00:00Z',
+          },
+          _count: {
+            entries: 12,
+            comments: 8,
+            likes: 24,
+          },
+        },
+        '2': {
+          id: '2',
+          userId: 'mock-user-2',
+          title: 'Organic Outdoor Garden - Multiple Strains',
+          description: 'Growing several strains organically in my backyard. Using compost tea and natural pest control methods.',
+          strainName: 'Mixed (OG Kush, Northern Lights, Girl Scout Cookies)',
+          strainType: 'Mixed',
+          phase: 'FLOWERING',
+          isPublic: true,
+          startDate: '2024-05-15T00:00:00Z',
+          lightType: 'Natural Sunlight',
+          medium: 'Outdoor Soil',
+          nutrients: 'Organic Compost Tea',
+          createdAt: '2024-05-15T00:00:00Z',
+          updatedAt: '2024-11-15T00:00:00Z',
+          user: {
+            id: 'mock-user-2',
+            username: 'OrganicGrower',
+            email: 'organic@example.com',
+            role: 'USER',
+            createdAt: '2024-05-01T00:00:00Z',
+          },
+          _count: {
+            entries: 45,
+            comments: 34,
+            likes: 89,
+          },
+        },
+        '3': {
+          id: '3',
+          userId: 'mock-user-3',
+          title: 'Hydroponic Setup - Gorilla Glue #4',
+          description: 'Testing out a DWC hydroponic system for the first time with GG4. Closely monitoring EC and pH levels daily.',
+          strainName: 'Gorilla Glue #4',
+          strainType: 'Hybrid',
+          phase: 'FLOWERING',
+          isPublic: true,
+          startDate: '2024-08-20T00:00:00Z',
+          lightType: 'LED',
+          lightWatts: 600,
+          medium: 'Hydro (DWC)',
+          nutrients: 'General Hydroponics Flora Series',
+          createdAt: '2024-08-20T00:00:00Z',
+          updatedAt: '2024-11-15T00:00:00Z',
+          user: {
+            id: 'mock-user-3',
+            username: 'HydroMaster',
+            email: 'hydro@example.com',
+            role: 'USER',
+            createdAt: '2024-08-01T00:00:00Z',
+          },
+          _count: {
+            entries: 28,
+            comments: 19,
+            likes: 56,
+          },
+        },
+      };
+
+      // Mock entries data for demo mode
+      const mockEntriesMap: Record<string, Entry> = {
+        'entry-1-1': {
+          id: 'entry-1-1',
+          runId: '1',
+          userId: 'mock-user-1',
+          dayNumber: 7,
+          weekNumber: 1,
+          title: 'Week 1 - Seedling Progress',
+          content: 'Seedlings are looking healthy! First true leaves are showing. The environment is stable and the plants are responding well to the light schedule.',
+          temperature: 24,
+          humidity: 65,
+          vpd: 0.8,
+          createdAt: '2024-10-08T00:00:00Z',
+          updatedAt: '2024-10-08T00:00:00Z',
+          images: [],
+        },
+        'entry-1-2': {
+          id: 'entry-1-2',
+          runId: '1',
+          userId: 'mock-user-1',
+          dayNumber: 14,
+          weekNumber: 2,
+          title: 'Week 2 - Vegetative Growth Begins',
+          content: 'Plants are growing rapidly now. Starting light feeding with quarter-strength nutrients. The stems are thickening nicely and new growth is vigorous.',
+          temperature: 25,
+          humidity: 60,
+          vpd: 1.0,
+          ph: 6.2,
+          ec: 0.8,
+          createdAt: '2024-10-15T00:00:00Z',
+          updatedAt: '2024-10-15T00:00:00Z',
+          images: [],
+        },
+        'entry-1-3': {
+          id: 'entry-1-3',
+          runId: '1',
+          userId: 'mock-user-1',
+          dayNumber: 21,
+          weekNumber: 3,
+          title: 'Week 3 - Bushy Growth',
+          content: 'Plants are getting bushy! Time for some LST training. Started bending the main stem to encourage lateral growth. The canopy is developing evenly.',
+          temperature: 26,
+          humidity: 58,
+          vpd: 1.1,
+          ph: 6.3,
+          ec: 1.2,
+          ppfd: 400,
+          createdAt: '2024-10-22T00:00:00Z',
+          updatedAt: '2024-10-22T00:00:00Z',
+          images: [],
+        },
+        'entry-2-1': {
+          id: 'entry-2-1',
+          runId: '2',
+          userId: 'mock-user-2',
+          dayNumber: 30,
+          weekNumber: 4,
+          title: 'Flowering Stage Begins',
+          content: 'First pistils appearing! The plants have transitioned to flowering beautifully. Applied compost tea and adjusted watering schedule.',
+          temperature: 23,
+          humidity: 55,
+          vpd: 1.2,
+          ph: 6.5,
+          createdAt: '2024-06-14T00:00:00Z',
+          updatedAt: '2024-06-14T00:00:00Z',
+          images: [],
+        },
+        'entry-3-1': {
+          id: 'entry-3-1',
+          runId: '3',
+          userId: 'mock-user-3',
+          dayNumber: 35,
+          weekNumber: 5,
+          title: 'Week 5 - Dense Buds Forming',
+          content: 'The buds are swelling nicely! EC is at 1.8 and the plants are feeding heavy. Reservoir temps are stable at 68°F.',
+          temperature: 25,
+          humidity: 50,
+          vpd: 1.4,
+          ph: 5.8,
+          ec: 1.8,
+          ppfd: 650,
+          createdAt: '2024-09-24T00:00:00Z',
+          updatedAt: '2024-09-24T00:00:00Z',
+          images: [],
+        },
+      };
+
+      const mockRun = mockRuns[runId];
+      const mockEntry = mockEntriesMap[entryId];
+
+      if (mockRun && mockEntry) {
+        setRun(mockRun);
+        setEntry(mockEntry);
+        setError('');
+      } else {
+        setError(err.response?.data?.message || 'Failed to load entry details');
+      }
     } finally {
       setLoading(false);
     }
