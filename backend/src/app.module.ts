@@ -8,6 +8,7 @@ import { CommentsModule } from './comments/comments.module';
 import { LikesModule } from './likes/likes.module';
 import { FollowsModule } from './follows/follows.module';
 import { UploadsModule } from './uploads/uploads.module';
+import { HarvestsModule } from './harvests/harvests.module';
 import { PrismaService } from './prisma.service';
 
 @Module({
@@ -23,6 +24,7 @@ import { PrismaService } from './prisma.service';
     LikesModule,
     FollowsModule,
     UploadsModule,
+    HarvestsModule,
   ],
   providers: [PrismaService],
   exports: [PrismaService],

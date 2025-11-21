@@ -27,6 +27,7 @@ export interface Run {
   endDate?: string;
   userId: string;
   user?: User;
+  harvest?: Harvest;
   createdAt: string;
   updatedAt: string;
   _count?: {
@@ -83,4 +84,33 @@ export interface Follow {
   followerId: string;
   followingId: string;
   createdAt: string;
+}
+
+export interface Harvest {
+  id: string;
+  harvestDate: string;
+  wetWeight?: number;
+  trimMethod?: string;
+  harvestNotes?: string;
+  harvestImages?: string[];
+  dryingStartDate?: string;
+  dryingEndDate?: string;
+  dryingTemp?: number;
+  dryingHumidity?: number;
+  dryWeight?: number;
+  dryingNotes?: string;
+  curingStartDate?: string;
+  curingMethod?: string;
+  jarCount?: number;
+  burpingSchedule?: string;
+  curingHumidity?: number;
+  curingNotes?: string;
+  finalWeight?: number;
+  qualityRating?: number;
+  qualityNotes?: string;
+  yieldPerWatt?: number;
+  yieldPerDay?: number;
+  runId: string;
+  createdAt: string;
+  updatedAt: string;
 }

@@ -433,6 +433,52 @@ export default function RunDetailClient() {
         )}
       </div>
 
+      {/* Harvest Section */}
+      {(run.phase === 'DRYING' || run.phase === 'CURING' || run.harvest) && (
+        <div className="card mb-8">
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-2xl font-bold">🌿 Harvest Data</h2>
+            {isOwner && (
+              <Link href={`/runs/${run.id}/harvest`} className="btn-secondary">
+                {run.harvest ? 'View Details' : 'Add Harvest Data'}
+              </Link>
+            )}
+          </div>
+          {run.harvest ? (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {run.harvest.finalWeight && (
+                <div className="bg-green-50 rounded-lg p-3">
+                  <p className="text-sm text-gray-600">Final Weight</p>
+                  <p className="text-xl font-bold text-green-700">{run.harvest.finalWeight}g</p>
+                </div>
+              )}
+              {run.harvest.yieldPerWatt && (
+                <div className="bg-blue-50 rounded-lg p-3">
+                  <p className="text-sm text-gray-600">g/W</p>
+                  <p className="text-xl font-bold text-blue-700">{run.harvest.yieldPerWatt}</p>
+                </div>
+              )}
+              {run.harvest.yieldPerDay && (
+                <div className="bg-purple-50 rounded-lg p-3">
+                  <p className="text-sm text-gray-600">g/day</p>
+                  <p className="text-xl font-bold text-purple-700">{run.harvest.yieldPerDay}</p>
+                </div>
+              )}
+              {run.harvest.qualityRating && (
+                <div className="bg-yellow-50 rounded-lg p-3">
+                  <p className="text-sm text-gray-600">Quality</p>
+                  <p className="text-xl font-bold text-yellow-700">{'⭐'.repeat(run.harvest.qualityRating)}</p>
+                </div>
+              )}
+            </div>
+          ) : (
+            <p className="text-gray-600">
+              Your grow is in the {run.phase.toLowerCase()} phase. Time to add harvest data!
+            </p>
+          )}
+        </div>
+      )}
+
       {/* Phase Transition - Only for owner */}
       {isOwner && (
         <div className="mb-8">

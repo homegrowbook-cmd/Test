@@ -94,6 +94,7 @@ export class RunsService {
             bio: true,
           },
         },
+        harvest: true,
         _count: {
           select: {
             entries: true,
