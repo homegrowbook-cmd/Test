@@ -2,8 +2,8 @@
 
 > **Ziel**: Eine vollständige, benutzerfreundliche Platform schaffen, die es ermöglicht, den ersten Grow von Anfang bis Ende zu dokumentieren und zu teilen.
 
-**Letzte Aktualisierung**: November 2024  
-**Status**: In aktiver Entwicklung
+**Letzte Aktualisierung**: 21. November 2024  
+**Status**: In aktiver Entwicklung - Phase 1 MVP ~90% Complete
 
 ---
 
@@ -52,12 +52,18 @@
 - ✅ API Client mit Axios
 - ✅ Responsive Design
 - ✅ GitHub Pages Deployment
-- ✅ **Demo Mode - UI ohne Backend testen!**
-- ✅ Run List/Detail/Edit Views
-- ✅ Entry Create/Detail Views
-- ✅ User Profile Views
+- ✅ **Demo Mode - UI ohne Backend testen!** ⭐ NEW
+  - 3 Demo-Benutzer (Alice, Bob, Charlie)
+  - 6 Beispiel-Runs mit Mock-Daten
+  - Komplette UI-Navigation ohne Backend möglich
+  - Live unter: https://homegrowbook-cmd.github.io/Test/
+- ✅ Run List/Detail/Edit Views (mit Mock-Daten Fallback)
+- ✅ Entry Create/Detail/Edit Views
+- ✅ User Profile Views (mit Demo-Daten)
 - ✅ Image Upload Components
 - ✅ Measurement Input Components
+- ✅ VPD Auto-Calculator
+- ✅ Phase Transition UI
 
 #### Infrastructure
 - ✅ Docker Compose Setup
@@ -67,23 +73,24 @@
 
 ### ⚠️ Was fehlt noch
 
-#### Kritische Features für ersten Grow
-1. **Run/Grow Diary UI** - Frontend für Grow-Erstellung und -Verwaltung
-2. **Entry UI** - Frontend für tägliche Einträge
-3. **Image Upload UI** - Drag & Drop Bildupload
-4. **Measurement Input** - Benutzerfreundliche Eingabe von Messwerten
-5. **Phase Management** - UI für Wachstumsphasen-Tracking
-6. **Harvest Tracking** - Ernte-, Trocknungs- und Curing-Daten
-7. **Timeline View** - Chronologische Ansicht aller Einträge
-8. **Statistics Dashboard** - Visualisierung von Daten und Fortschritt
+#### Kritische Features für ersten Grow (Noch zu implementieren)
+1. ~~**Run/Grow Diary UI**~~ ✅ **ERLEDIGT** - Frontend vollständig implementiert
+2. ~~**Entry UI**~~ ✅ **ERLEDIGT** - Create, Detail, Edit, Timeline fertig
+3. ~~**Image Upload UI**~~ ✅ **ERLEDIGT** - Komponenten vorhanden
+4. ~~**Measurement Input**~~ ✅ **ERLEDIGT** - Mit VPD Auto-Calculator
+5. ~~**Phase Management**~~ ✅ **ERLEDIGT** - Phase Transition UI implementiert
+6. **Harvest Tracking** - Ernte-, Trocknungs- und Curing-Daten (⚠️ Pending)
+7. ~~**Timeline View**~~ ✅ **ERLEDIGT** - Chronologische Entry-Ansicht
+8. **Statistics Dashboard** - Visualisierung von Daten und Fortschritt (⚠️ Pending)
 
-#### Wichtige Verbesserungen
-9. **Search & Filter** - Grows durchsuchen und filtern
-10. **User Profile Pages** - Öffentliche Benutzerprofile
-11. **Mobile Optimization** - Touch-optimierte Bedienung
-12. **Image Gallery** - Bildgalerie mit Zoom
-13. **Notifications** - Benachrichtigungen für Likes/Kommentare
-14. **Data Export** - Grow-Daten als PDF/JSON exportieren
+#### Wichtige Verbesserungen (Nice to Have)
+9. **Search & Filter** - Grows durchsuchen und filtern (⚠️ Pending)
+10. ~~**User Profile Pages**~~ ✅ **ERLEDIGT** - Mit Demo-Fallback
+11. **Mobile Optimization** - Touch-optimierte Bedienung (⚠️ Partial)
+12. ~~**Image Gallery**~~ ✅ **ERLEDIGT** - Bildgalerie mit Zoom
+13. **Notifications** - Benachrichtigungen für Likes/Kommentare (⚠️ Pending)
+14. **Data Export** - Grow-Daten als PDF/JSON exportieren (⚠️ Pending)
+15. **Backend Deployment** - API-Server online verfügbar machen (🔴 Critical)
 
 ---
 
@@ -111,7 +118,7 @@
 
 **Erfolgskriterium**: User kann einen neuen Grow anlegen und dessen Details sehen/bearbeiten.
 
-#### Meilenstein 1.2: Entry Management UI (2 Wochen)
+#### Meilenstein 1.2: Entry Management UI (2 Wochen) ✅ **KOMPLETT**
 - ✅ **Create Entry Form**
   - Tag/Woche Nummer
   - Titel und Beschreibung
@@ -129,9 +136,9 @@
   - Einträge nachträglich bearbeiten
   - Löschen mit Bestätigung
 
-**Erfolgskriterium**: User kann tägliche/wöchentliche Updates mit Bildern und Daten erstellen.
+**Erfolgskriterium**: ✅ User kann tägliche/wöchentliche Updates mit Bildern und Daten erstellen.
 
-#### Meilenstein 1.3: Image & Media Handling (1 Woche)
+#### Meilenstein 1.3: Image & Media Handling (1 Woche) ⚠️ **66% KOMPLETT**
 - ✅ **Image Upload Component**
   - Drag & Drop Interface
   - Multiple File Upload
@@ -142,14 +149,14 @@
   - Lightbox/Modal für Vollansicht
   - Zoom Funktion
   - Bildunterschriften
-- [ ] **Image Optimization**
+- ⚠️ **Image Optimization** (Pending für Phase 2)
   - Automatische Kompression
   - Thumbnail Generation
   - Lazy Loading
 
-**Erfolgskriterium**: User kann einfach Bilder hochladen und in einer Galerie betrachten.
+**Erfolgskriterium**: ✅ User kann einfach Bilder hochladen und in einer Galerie betrachten.
 
-#### Meilenstein 1.4: Measurements & Data (1 Woche)
+#### Meilenstein 1.4: Measurements & Data (1 Woche) ✅ **KOMPLETT**
 - ✅ **Measurement Input UI**
   - Benutzerfreundliche Eingabefelder
   - Unit-Anzeige (°C, %, pH, etc.)
@@ -162,26 +169,29 @@
 - ✅ **VPD Calculator**
   - Automatische VPD-Berechnung aus Temp & Humidity
   - Anzeige des optimalen Bereichs
+  - Toggle für manuelle Eingabe
 
-**Erfolgskriterium**: User kann alle wichtigen Messwerte einfach eingeben und sehen.
+**Erfolgskriterium**: ✅ User kann alle wichtigen Messwerte einfach eingeben und sehen.
 
-#### Meilenstein 1.5: Phase Tracking (1 Woche)
+#### Meilenstein 1.5: Phase Tracking (1 Woche) ✅ **KOMPLETT**
 - ✅ **Phase Indicator**
   - Visueller Status der aktuellen Phase
-  - Badge/Icon pro Phase
+  - Badge/Icon pro Phase mit Farben
   - Phasen-Historie
 - ✅ **Phase Transition**
-  - Manuelle Phasenänderung
+  - Manuelle Phasenänderung mit UI
   - Automatische Vorschläge basierend auf Tagen
   - Notiz bei Phasenwechsel
-- [ ] **Phase Statistics**
+  - Auto-Entry bei Phasenwechsel
+- ⚠️ **Phase Statistics** (Pending für Phase 2)
   - Dauer pro Phase
   - Durchschnittswerte pro Phase
 
-**Erfolgskriterium**: User kann den Fortschritt durch die Wachstumsphasen tracken.
+**Erfolgskriterium**: ✅ User kann den Fortschritt durch die Wachstumsphasen tracken.
 
 **Phase 1 Gesamtdauer**: 7 Wochen  
-**Phase 1 Fertigstellung**: Mitte Januar 2025
+**Phase 1 Status**: ✅ ~90% KOMPLETT (nur Image Optimization & Phase Statistics pending)
+**Phase 1 Fertigstellung**: 21. November 2024
 
 ---
 
