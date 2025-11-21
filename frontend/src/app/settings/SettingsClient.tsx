@@ -53,14 +53,13 @@ export default function SettingsClient() {
     try {
       const updateData: UpdateUserData = {};
       
-      if (bio !== currentUser?.bio) updateData.bio = bio;
-      if (website !== currentUser?.website) updateData.website = website;
-      if (instagram !== currentUser?.instagram) updateData.instagram = instagram;
-      if (twitter !== currentUser?.twitter) updateData.twitter = twitter;
-      if (avatar !== currentUser?.avatar) updateData.avatar = avatar;
+      if (bio !== (currentUser?.bio || '')) updateData.bio = bio;
+      if (website !== (currentUser?.website || '')) updateData.website = website;
+      if (instagram !== (currentUser?.instagram || '')) updateData.instagram = instagram;
+      if (twitter !== (currentUser?.twitter || '')) updateData.twitter = twitter;
+      if (avatar !== (currentUser?.avatar || '')) updateData.avatar = avatar;
 
       if (Object.keys(updateData).length === 0) {
-        setError('No changes to save');
         setLoading(false);
         return;
       }
