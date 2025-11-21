@@ -1,13 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import Navigation from '@/components/Navigation'
-
-const inter = Inter({ 
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-})
 
 export const metadata: Metadata = {
   title: 'homegrowbook 2.0 - Open Grow Log Platform',
@@ -20,20 +13,36 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`dark ${inter.variable}`}>
+    <html lang="en" className="dark">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
       </head>
       <body className="font-sans">
-        <Navigation />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <footer className="bg-gray-100 dark:bg-black py-8 mt-16 border-t dark:border-primary-500/20">
-          <div className="container mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
-            <p className="font-bold">&copy; 2024 homegrowbook 2.0 - Open Source Grow Log Platform</p>
-          </div>
-        </footer>
+        <div className="w-full max-w-[1040px] mx-auto px-4 py-4 md:px-6 md:py-6 min-h-screen flex flex-col">
+          <Navigation />
+          <main className="flex-1 mt-6 md:mt-8">
+            {children}
+          </main>
+          <footer className="mt-6 pt-3.5 border-t text-xs flex flex-wrap justify-between gap-2"
+                  style={{
+                    borderColor: 'rgba(32, 40, 52, 0.9)',
+                    color: 'var(--text-muted)'
+                  }}>
+            <span>&copy; {new Date().getFullYear()} homegrowbook 2.0 - Open Source Grow Log Platform</span>
+            <span>
+              Follow on{' '}
+              <a href="https://instagram.com/homegrowbook" target="_blank" rel="noreferrer" 
+                 className="hover:underline" style={{color: 'var(--accent)'}}>
+                Instagram
+              </a>
+              {' · '}
+              <a href="https://www.youtube.com/@HOMEGROWBOOK" target="_blank" rel="noreferrer"
+                 className="hover:underline" style={{color: 'var(--accent)'}}>
+                YouTube
+              </a>
+            </span>
+          </footer>
+        </div>
       </body>
     </html>
   )
