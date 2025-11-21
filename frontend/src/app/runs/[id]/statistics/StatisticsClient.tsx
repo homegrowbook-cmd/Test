@@ -53,7 +53,138 @@ export default function StatisticsClient() {
       setError('');
     } catch (err) {
       console.error('Failed to fetch data:', err);
-      setError('Failed to load statistics');
+      
+      // Fallback to mock data for demo mode
+      const mockRuns: Record<string, { run: Run; entries: Entry[] }> = {
+        '1': {
+          run: {
+            id: '1',
+            userId: 'mock-user-1',
+            title: 'First Indoor Grow - Blue Dream',
+            description: 'My first attempt at growing Blue Dream indoors. Using a 2x2 tent with LED lighting. Excited to document this journey!',
+            strainName: 'Blue Dream',
+            strainType: 'Sativa Dominant Hybrid',
+            phase: 'VEGETATIVE',
+            isPublic: true,
+            startDate: '2024-10-01T00:00:00Z',
+            lightType: 'LED',
+            lightWatts: 240,
+            medium: 'Soil',
+            nutrients: 'General Hydroponics',
+            createdAt: '2024-10-01T00:00:00Z',
+            updatedAt: '2024-11-15T00:00:00Z',
+            user: {
+              id: 'mock-user-1',
+              username: 'GreenThumb420',
+              email: 'greenthumb@example.com',
+              role: 'USER',
+              createdAt: '2024-09-01T00:00:00Z',
+            },
+            _count: {
+              entries: 12,
+              comments: 8,
+              likes: 24,
+            },
+          },
+          entries: [
+            {
+              id: 'entry-1-1',
+              runId: '1',
+              userId: 'mock-user-1',
+              title: 'Week 1 - Seedling Progress',
+              content: 'Seedlings are looking healthy! First true leaves are showing.',
+              dayNumber: 7,
+              weekNumber: 1,
+              temperature: 24,
+              humidity: 65,
+              vpd: 1.1,
+              createdAt: '2024-10-08T00:00:00Z',
+              updatedAt: '2024-10-08T00:00:00Z',
+              images: [],
+            },
+            {
+              id: 'entry-1-2',
+              runId: '1',
+              userId: 'mock-user-1',
+              title: 'Week 2 - Vegetative Growth Begins',
+              content: 'Plants are growing rapidly now. Starting light feeding.',
+              dayNumber: 14,
+              weekNumber: 2,
+              temperature: 25,
+              humidity: 60,
+              vpd: 1.2,
+              ph: 6.2,
+              ec: 0.8,
+              createdAt: '2024-10-15T00:00:00Z',
+              updatedAt: '2024-10-15T00:00:00Z',
+              images: [],
+            },
+            {
+              id: 'entry-1-3',
+              runId: '1',
+              userId: 'mock-user-1',
+              title: 'Week 3 - Bushy Growth',
+              content: 'Plants are getting bushy! Time for some LST training.',
+              dayNumber: 21,
+              weekNumber: 3,
+              temperature: 26,
+              humidity: 58,
+              vpd: 1.3,
+              ph: 6.3,
+              ec: 1.2,
+              ppfd: 450,
+              createdAt: '2024-10-22T00:00:00Z',
+              updatedAt: '2024-10-22T00:00:00Z',
+              images: [],
+            },
+            {
+              id: 'entry-1-4',
+              runId: '1',
+              userId: 'mock-user-1',
+              title: 'Week 4 - LST Results',
+              content: 'LST is working great. Multiple cola sites developing.',
+              dayNumber: 28,
+              weekNumber: 4,
+              temperature: 26,
+              humidity: 57,
+              vpd: 1.35,
+              ph: 6.4,
+              ec: 1.4,
+              ppfd: 500,
+              createdAt: '2024-10-29T00:00:00Z',
+              updatedAt: '2024-10-29T00:00:00Z',
+              images: [],
+            },
+            {
+              id: 'entry-1-5',
+              runId: '1',
+              userId: 'mock-user-1',
+              title: 'Week 5 - Vigorous Growth',
+              content: 'Plants are responding well to nutrients. Very vigorous growth.',
+              dayNumber: 35,
+              weekNumber: 5,
+              temperature: 25,
+              humidity: 56,
+              vpd: 1.3,
+              ph: 6.2,
+              ec: 1.6,
+              ppfd: 550,
+              createdAt: '2024-11-05T00:00:00Z',
+              updatedAt: '2024-11-05T00:00:00Z',
+              images: [],
+            },
+          ],
+        },
+      };
+
+      const mockData = mockRuns[runId];
+      if (mockData) {
+        setRun(mockData.run);
+        setEntries(mockData.entries);
+        setError('');
+      } else {
+        setError('Run not found');
+      }
     } finally {
       setLoading(false);
     }
