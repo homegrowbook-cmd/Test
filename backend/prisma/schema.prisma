@@ -85,6 +85,7 @@ model Run {
   entries     Entry[]
   comments    Comment[]
   likes       Like[]
+  harvest     Harvest?
   
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
@@ -171,4 +172,48 @@ model Follow {
 
   @@unique([followerId, followingId])
   @@map("follows")
+}
+
+model Harvest {
+  id              String   @id @default(uuid())
+  
+  // Harvest data
+  harvestDate     DateTime
+  wetWeight       Float?   // in grams
+  trimMethod      String?  // wet trim, dry trim, etc.
+  harvestNotes    String?
+  harvestImages   String[] @default([])
+  
+  // Drying phase
+  dryingStartDate DateTime?
+  dryingEndDate   DateTime?
+  dryingTemp      Float?   // temperature during drying
+  dryingHumidity  Float?   // humidity during drying
+  dryWeight       Float?   // in grams
+  dryingNotes     String?
+  
+  // Curing phase
+  curingStartDate DateTime?
+  curingMethod    String?  // jar curing, grove bags, etc.
+  jarCount        Int?
+  burpingSchedule String?
+  curingHumidity  Float?   // target humidity in jars (usually 58-62%)
+  curingNotes     String?
+  
+  // Final results
+  finalWeight     Float?   // final cured weight in grams
+  qualityRating   Int?     // 1-5 stars
+  qualityNotes    String?
+  
+  // Calculated metrics (can be computed)
+  yieldPerWatt    Float?   // grams per watt
+  yieldPerDay     Float?   // grams per day
+  
+  runId           String   @unique
+  run             Run      @relation(fields: [runId], references: [id], onDelete: Cascade)
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("harvests")
 }
