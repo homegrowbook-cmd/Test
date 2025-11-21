@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { useAuthStore } from '@/store/authStore';
 
@@ -13,8 +14,15 @@ export default function Navigation() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-500 transition-all duration-300 transform hover:scale-105">
-            🌿 homegrowbook
+          <Link href="/" className="flex items-center gap-2 text-2xl font-bold text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-500 transition-all duration-300 transform hover:scale-105">
+            <Image 
+              src="/logo.png" 
+              alt="homegrowbook logo" 
+              width={40} 
+              height={40}
+              className="rounded-lg"
+            />
+            <span>homegrowbook</span>
           </Link>
 
           {/* Desktop Navigation */}
